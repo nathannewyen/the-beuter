@@ -24,6 +24,9 @@ const ProductSchema = new mongoose.Schema({
     description3: {
         type: String,
     },
+    description4: {
+        type: String,
+    },
     img_url1: {
         type: String,
         required: true,
@@ -39,6 +42,18 @@ const ProductSchema = new mongoose.Schema({
     img_url4: {
         type: String,
         required: true,
+    },
+    size: {
+        type: String,
+    },
+    fit: {
+        type: String,
+    },
+    size2: {
+        type: String,
+    },
+    fit2: {
+        type: String,
     },
     category: {
         type: String,
