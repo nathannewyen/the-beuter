@@ -11,6 +11,7 @@ const FooterWrapper = styled.div`
   font-size: ${fontSizes.sm};
   font-weight: 500;
   bottom: 0;
+  position: absolute;
   background-color: red;
   width: 100%;
 `;

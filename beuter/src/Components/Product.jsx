@@ -72,6 +72,29 @@ const ItemPrice = styled.p`
   font-weight: 500;
 `;
 
+const SelectSizes = styled.form`
+  padding: 5px 0;
+`;
+
+const Size = styled.option`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  vertical-align: bottom;
+  font-size: ${fontSizes.sm};
+  font-weight: 500;
+`;
+
+const SizeInfo = styled.span`
+  position: relative;
+  margin-right: 10px;
+  width: 25px;
+  border: 1.2px solid #d1d1d1;
+  border-radius: 0px;
+  height: 25px;
+  display: inline-block;
+`;
+
 const BuyButton = styled.button`
   background-color: black;
   font-size: ${fontSizes.md};
@@ -167,6 +190,17 @@ const Product = (props) => {
         {size2 ? <Info>• {size2}</Info> : <span></span>}
         {fit2 ? <Info>• {fit2}</Info> : <span></span>}
         <ItemPrice>{nf.format(price)} vnd</ItemPrice>
+        <SelectSizes>
+          <SizeInfo value="M">
+            <Size>M</Size>
+          </SizeInfo>
+          <SizeInfo value="L">
+            <Size>L</Size>
+          </SizeInfo>
+          <SizeInfo value="XL">
+            <Size>XL</Size>
+          </SizeInfo>
+        </SelectSizes>
         <BuyButton>Pre-order</BuyButton>
         <SideNavFooter>
           <ItemInfo to="/#">Size Chart</ItemInfo>
