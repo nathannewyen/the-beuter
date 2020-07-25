@@ -51,7 +51,7 @@ const ItemPrice = styled.p`
 `;
 
 const ShopAllProducts = (props) => {
-	var nf = new Intl.NumberFormat();
+	const nf = new Intl.NumberFormat();
 
 	const [ products, setProducts ] = useState([]);
 	const getProductsAPI = () => {
