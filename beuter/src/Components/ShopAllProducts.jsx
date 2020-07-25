@@ -5,9 +5,12 @@ import axios from 'axios';
 import media from '../Styles/media';
 
 // Styling
-const NewArrivalWrapper = styled.div`
+const ShopWrapper = styled.div`
 	margin: 50px 0;
 	margin-left: 400px;
+	@media ${media.laptopL} {
+		margin-left: 300px;
+	}
 `;
 
 const ListItems = styled.ul``;
@@ -17,6 +20,10 @@ const Item = styled.li`
 	display: inline-block;
 	margin: 20px 60px;
 	text-align: center;
+
+	@media ${media.laptopL} {
+		margin: 20px;
+	}
 `;
 
 const ItemLink = styled(Link)`
@@ -28,8 +35,8 @@ const ItemImage = styled.img`
 	src: url(${(props) => props.src});
 	width: 500px;
 
-	@media ${media.laptop} {
-		width: 300px;
+	@media ${media.laptopL} {
+		width: 330px;
 	}
 `;
 
@@ -43,7 +50,7 @@ const ItemPrice = styled.p`
 	font-weight: 500;
 `;
 
-const NewArrival = (props) => {
+const ShopAllProducts = (props) => {
 	var nf = new Intl.NumberFormat();
 
 	const [ products, setProducts ] = useState([]);
@@ -61,14 +68,13 @@ const NewArrival = (props) => {
 
 	useEffect(
 		() => {
-			// eslint-disable-next-line
 			getProductsAPI();
 		},
 		[ props ]
 	);
 
 	return (
-		<NewArrivalWrapper>
+		<ShopWrapper>
 			<ListItems>
 				{products.map((product, i) => (
 					<Item key={i}>
@@ -80,8 +86,8 @@ const NewArrival = (props) => {
 					</Item>
 				))}
 			</ListItems>
-		</NewArrivalWrapper>
+		</ShopWrapper>
 	);
 };
 
-export default NewArrival;
+export default ShopAllProducts;

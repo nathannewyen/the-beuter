@@ -16,20 +16,34 @@ const ProductSchema = new mongoose.Schema({
     },
     description1: {
         type: String,
-        required: [true, "Please descript your product."],
+        required: true,
     },
     description2: {
         type: String,
-        required: [true, "Please descript your product."],
     },
     description3: {
         type: String,
-        required: [true, "Please descript your product."],
     },
-    img_url: {
+    img_url1: {
         type: String,
         required: true,
     },
+    img_url2: {
+        type: String,
+        required: true,
+    },
+    img_url3: {
+        type: String,
+        required: true,
+    },
+    img_url4: {
+        type: String,
+        required: true,
+    },
+    category: {
+        type: String,
+        required: true
+    }
 }, {
     timestamps: true,
 });

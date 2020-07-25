@@ -6,8 +6,8 @@ module.exports = (app) => {
     // Create a product
     app.post("/api/products", product.create);
 
-    // Get one product
-    app.get("/api/products/:id", product.show)
+    // Get one product by title_url
+    app.get("/api/products/:title_url", product.show_title_url)
 
     // Delete a product
     app.delete("/api/products/:id", product.deleteProduct)

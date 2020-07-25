@@ -15,9 +15,9 @@ module.exports = {
             .catch((err) => res.json(err));
     },
 
-    show(req, res) {
-        Product.findById({
-                _id: req.params.id
+    show_title_url(req, res) {
+        Product.findOne({
+                title_url: req.params.title_url
             })
             .then(oneProduct => res.json(oneProduct))
             .catch(err => res.json(err))
