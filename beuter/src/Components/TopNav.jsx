@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "@reach/router";
+import theme from "../Styles/theme";
+const { fontSizes } = theme;
 
 const NavBar = styled.div`
   padding: 30px 40px;
@@ -8,11 +10,13 @@ const NavBar = styled.div`
 const LogoNav = styled.img`
   src: url(${(props) => props.src});
   width: 180px;
+  position: fixed;
 `;
 
 const Utilities = styled.ul`
   font-size: 10px;
-  float: right;
+  right: 30px;
+  position: fixed;
 `;
 
 const UlityItem = styled.li`
@@ -21,19 +25,19 @@ const UlityItem = styled.li`
 `;
 
 const SearchProduct = styled(Link)`
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: none;
   color: black;
 `;
 
 const SearchIcon = styled.span`
-  font-size: 10px;
+  font-size: ${fontSizes.xs};
   font-weight: 500;
 `;
 
 const ShoppingBag = styled(Link)`
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: none;
   color: black;
 `;

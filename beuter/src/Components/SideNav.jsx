@@ -1,18 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "@reach/router";
+import theme from "../Styles/theme";
+const { fontSizes } = theme;
 
 const Sidenav = styled.div`
-  width: 200px;
-  margin-top: 20px;
+  width: 350px;
+  height: 100%;
+  margin-top: 50px;
+  vertical-align: top;
   display: inline-block;
+  position: fixed;
+  z-index: 1;
+  overflow-x: hidden;
 `;
 
 const AllItems = styled.ul``;
 
 const ListItems = styled(Link)`
-  font-size: 12px;
-  font-weight: 600;
+  font-size: ${fontSizes.xs};
+  font-weight: 500;
   color: black;
   margin-top: 18px;
   text-decoration: none;
@@ -22,7 +29,7 @@ const ListItems = styled(Link)`
 const Item = styled(Link)`
   text-decoration: none;
   color: black;
-  font-size: 10px;
+  font-size: ${fontSizes.xs};
   margin-top: 8px;
   font-weight: 350;
   display: block;
@@ -32,7 +39,7 @@ const SideNav = (props) => {
   return (
     <Sidenav>
       <AllItems>
-        <ListItems to="#">NEW ARRIVAL</ListItems>
+        <ListItems to="/new-arrival">NEW ARRIVAL</ListItems>
         <ListItems to="#">
           TOPS
           <Item to="/">T-Shirts</Item>

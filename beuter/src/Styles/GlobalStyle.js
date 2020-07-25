@@ -1,10 +1,10 @@
 import {
-    createGlobalStyle
+  createGlobalStyle
 } from 'styled-components';
 import theme from './theme';
 const {
-    fontSizes,
-    fonts
+  fontSizes,
+  fonts
 } = theme;
 
 const GlobalStyle = createGlobalStyle `
@@ -25,8 +25,9 @@ const GlobalStyle = createGlobalStyle `
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     line-height: 1.3;
-    font-family: ${fonts.GothamBlack};
+    font-family: ${fonts.Gotham};
     font-size: ${fontSizes.xl};
+    letter-spacing: 0.5px;
     color: black;
   }
 `

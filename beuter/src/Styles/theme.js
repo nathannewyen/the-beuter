@@ -1,16 +1,15 @@
 const theme = {
     fonts: {
-        Gotham: 'Gotham'
+        Gotham: 'Gotham, san serif'
     },
 
     fontSizes: {
-        xs: '12px',
-        smish: '13px',
-        sm: '14px',
-        md: '16px',
-        lg: '18px',
-        xl: '20px',
-        xxl: '22px',
+        xs: '10px',
+        sm: '11px',
+        md: '14px',
+        lg: '16px',
+        xl: '18px',
+        xxl: '20px',
         h3: '32px',
     },
 }
