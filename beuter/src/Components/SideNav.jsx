@@ -1,46 +1,65 @@
 import React from "react";
-import "rsuite/dist/styles/rsuite-default.css";
-import { Sidenav, Nav, Dropdown, Icon } from "rsuite";
+import styled from "styled-components";
+import { Link } from "@reach/router";
+
+const Sidenav = styled.div`
+  width: 200px;
+  margin-top: 20px;
+  display: inline-block;
+`;
+
+const AllItems = styled.ul``;
+
+const ListItems = styled(Link)`
+  font-size: 12px;
+  font-weight: 600;
+  color: black;
+  margin-top: 18px;
+  text-decoration: none;
+  display: block;
+`;
+
+const Item = styled(Link)`
+  text-decoration: none;
+  color: black;
+  font-size: 10px;
+  margin-top: 8px;
+  font-weight: 350;
+  display: block;
+`;
 
 const SideNav = (props) => {
   return (
-    <div style={{ width: 250 }}>
-      <Sidenav defaultOpenKeys={["3", "4"]} activeKey="1">
-        <Sidenav.Body>
-          <Nav>
-            <Nav.Item eventKey="1" icon={<Icon icon="dashboard" />}>
-              Dashboard
-            </Nav.Item>
-            <Nav.Item eventKey="2" icon={<Icon icon="group" />}>
-              User Group
-            </Nav.Item>
-            <Dropdown
-              eventKey="3"
-              title="Advanced"
-              icon={<Icon icon="magic" />}
-            >
-              <Dropdown.Item eventKey="3-1">Geo</Dropdown.Item>
-              <Dropdown.Item eventKey="3-2">Devices</Dropdown.Item>
-              <Dropdown.Item eventKey="3-3">Loyalty</Dropdown.Item>
-              <Dropdown.Item eventKey="3-4">Visit Depth</Dropdown.Item>
-            </Dropdown>
-            <Dropdown
-              eventKey="4"
-              title="Settings"
-              icon={<Icon icon="gear-circle" />}
-            >
-              <Dropdown.Item eventKey="4-1">Applications</Dropdown.Item>
-              <Dropdown.Item eventKey="4-2">Channels</Dropdown.Item>
-              <Dropdown.Item eventKey="4-3">Versions</Dropdown.Item>
-              <Dropdown.Menu eventKey="4-5" title="Custom Action">
-                <Dropdown.Item eventKey="4-5-1">Action Name</Dropdown.Item>
-                <Dropdown.Item eventKey="4-5-2">Action Params</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </Nav>
-        </Sidenav.Body>
-      </Sidenav>
-    </div>
+    <Sidenav>
+      <AllItems>
+        <ListItems to="#">NEW ARRIVAL</ListItems>
+        <ListItems to="#">
+          TOPS
+          <Item to="/">T-Shirts</Item>
+          <Item to="/">Shirts</Item>
+          <Item to="/">Hoodies</Item>
+          <Item to="/">Sweaters</Item>
+          <Item to="/">Jackets & Coats</Item>
+        </ListItems>
+        <ListItems to="#">
+          BOTTOMS
+          <Item to="/"> Pants </Item>
+          <Item to="/"> Shorts </Item>
+          <Item to="/"> Jeans </Item>
+        </ListItems>
+
+        <ListItems to="#">BAGS & BACKPACKS</ListItems>
+        <ListItems to="#">ACCESSORIES</ListItems>
+        <ListItems to="#">
+          COLLECTION
+          <Item to="/"> SPRING SUMMER 2020 </Item>
+          <Item to="/"> BLANKS BY BEUTER </Item>
+        </ListItems>
+        <ListItems to="#">CAMPAIGN</ListItems>
+        <ListItems to="#">ABOUT US</ListItems>
+        <ListItems to="#">CONTACT</ListItems>
+      </AllItems>
+    </Sidenav>
   );
 };
 
