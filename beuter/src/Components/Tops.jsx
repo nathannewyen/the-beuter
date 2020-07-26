@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import { Link } from '@reach/router';
-import axios from 'axios';
-import media from '../Styles/media';
 import theme from '../Styles/theme';
+import media from '../Styles/media';
 const { fontSizes } = theme;
 
-// Styling
-const ShopWrapper = styled.div`margin: 50px 0;`;
+const Wrapper = styled.div`margin: 50px 0;`;
+
+const Container = styled.div``;
 
 const ListItems = styled.ul`@media ${media.desktopL} {margin-left: 200px;}`;
 
 const Item = styled.li`
 	list-type: none;
 	display: inline-block;
-	margin: 20px 60px;
-	text-align: center;
-	@media ${media.laptopL} {
-		margin: 20px;
-	}
+	margin: 20px;
+`;
+
+const ItemImage = styled.img`
+	src: url(${(props) => props.src});
+	width: 300px;
 `;
 
 const ItemLink = styled(Link)`
@@ -26,40 +28,20 @@ const ItemLink = styled(Link)`
   text-decoration: none;
 `;
 
-const ItemImage = styled.img`
-	src: url(${(props) => props.src});
-	width: 300px;
-
-	@media ${media.desktopL} {
-		width: 320px;
-	}
-
-	@media ${media.desktop} {
-		width: 270px;
-	}
-
-	@media ${media.laptop} {
-		width: 220px;
-	}
-`;
-
 const ItemTitle = styled.p`
+	text-align: center;
 	font-size: ${fontSizes.xs};
 	font-weight: 500;
-	@media ${media.laptop} {
-		width: 200px;
-		margin: 0 auto;
-	}
 `;
 
 const ItemPrice = styled.p`
 	font-size: 11px;
+	text-align: center;
 	font-weight: 500;
 `;
 
-const ShopAllProducts = (props) => {
+const Tops = (props) => {
 	const nf = new Intl.NumberFormat();
-
 	const [ products, setProducts ] = useState([]);
 	const getProductsAPI = () => {
 		axios
@@ -81,22 +63,29 @@ const ShopAllProducts = (props) => {
 	);
 
 	return (
-		<ShopWrapper>
-			<ListItems>
-				{products.map((product, i) => (
-					<Item key={i}>
-						<ItemLink to={`/product/${product.title_url}`}>
-							<ItemImage src={product.img_url1} /> <ItemTitle> {product.title} </ItemTitle>
-							<ItemPrice>
-								{nf.format(product.price)}
-								vnd
-							</ItemPrice>
-						</ItemLink>
-					</Item>
-				))}
-			</ListItems>
-		</ShopWrapper>
+		<Wrapper>
+			<Container>
+				<ListItems>
+					{products.map((product, i) => (
+						<Item key={i}>
+							{product.category === 'top' ? (
+								<ItemLink to={`/product/${product.title_url}`}>
+									<ItemImage src={product.img_url1} /> <ItemTitle> {product.title} </ItemTitle>
+									<ItemPrice>
+										{nf.format(product.price)}
+										vnd
+									</ItemPrice>
+								</ItemLink>
+							) : (
+								<span />
+							)}
+						</Item>
+					))}
+				</ListItems>
+			</Container>
+		</Wrapper>
 	);
 };
 
-export default ShopAllProducts;
+export default Tops;
+// {product.category === 'top' ? <Info>{size}</Info> : <span />}
