@@ -21,6 +21,9 @@ const Sidenav = styled.div`
   @media ${media.laptopL} {
     width: 250px;
   }
+  @media ${media.laptop} {
+    width: 200px;
+  }
 `;
 
 const AllItems = styled.ul``;

@@ -3,11 +3,18 @@ import styled from "styled-components";
 import { Link } from "@reach/router";
 import axios from "axios";
 import media from "../Styles/media";
+import theme from "../Styles/theme";
+const { fontSizes } = theme;
 
 // Styling
 const ShopWrapper = styled.div`
   margin: 50px 0;
-  position: relative;
+  @media ${media.desktopL} {
+    margin-left: 350px;
+  }
+  @media ${media.laptop} {
+    margin-left: 150px;
+  }
 `;
 
 const ListItems = styled.ul``;
@@ -37,13 +44,21 @@ const ItemImage = styled.img`
   }
 
   @media ${media.laptopL} {
-    width: 300px;
+    width: 350px;
+  }
+
+  @media ${media.laptop} {
+    width: 230px;
   }
 `;
 
 const ItemTitle = styled.p`
-  font-size: 12px;
+  font-size: ${fontSizes.xs};
   font-weight: 500;
+  @media ${media.laptop} {
+    width: 200px;
+    margin: 0 auto;
+  }
 `;
 
 const ItemPrice = styled.p`

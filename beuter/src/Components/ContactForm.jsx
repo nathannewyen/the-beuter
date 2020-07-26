@@ -3,12 +3,11 @@ import styled from "styled-components";
 import { Link } from "@reach/router";
 import theme from "../Styles/theme";
 import media from "../Styles/media";
-const { fontSizes, fonts } = theme;
+const { fontSizes } = theme;
 
 const ContactWrapper = styled.div`
-  margin: 50px 15px;
+  margin: 50px 0;
   width: 100%;
-  position: relative;
 `;
 
 const ContactContainer = styled.div`

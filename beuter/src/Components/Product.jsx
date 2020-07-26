@@ -7,19 +7,8 @@ import media from "../Styles/media";
 const { fontSizes } = theme;
 
 const ProductWrapper = styled.div`
-  margin: 50px 0;
   width: 100%;
-  position: relative;
-  margin-left: 350px;
-  @media ${media.desktopL} {
-    margin-left: 500px;
-  }
-  @media ${media.desktop} {
-    margin-left: 400px;
-  }
-  @media ${media.laptopL} {
-    margin-left: 200px;
-  }
+  text-align: center;
 `;
 
 const ProductContainer = styled.div`
@@ -34,7 +23,7 @@ const ProductImage = styled.div`
 const Image = styled.img`
   src: url(${(props) => props.src});
   @media ${media.desktopL} {
-    width: 800px;
+    width: 1000px;
   }
   @media ${media.laptopL} {
     width: 600px;
@@ -46,7 +35,7 @@ const SideNav = styled.div`
   position: fixed;
   height: 100%;
   text-align: left;
-  margin-left: 50px;
+  margin: 50px;
 `;
 
 const ProductTitle = styled.div`
@@ -201,9 +190,9 @@ const Product = (props) => {
             <Size>XL</Size>
           </SizeInfo>
         </SelectSizes>
-        <BuyButton>Pre-order</BuyButton>
+        <BuyButton type="submit">Pre-order</BuyButton>
         <SideNavFooter>
-          <ItemInfo to="/#">Size Chart</ItemInfo>
+          <ItemInfo to="/size-chart">Size Chart</ItemInfo>
           <ItemInfo to="/shipping-return">Shipping and Return</ItemInfo>
         </SideNavFooter>
       </SideNav>
