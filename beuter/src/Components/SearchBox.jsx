@@ -30,6 +30,7 @@ const CloseButton = styled(Link)`
 const Children = styled.div``;
 
 const SearchBox = (props) => {
+
   return (
     <Wrapper
       style={{
