@@ -27,21 +27,21 @@ const ProductSchema = new mongoose.Schema({
     description4: {
         type: String,
     },
+    description5: {
+        type: String,
+    },
     img_url1: {
         type: String,
         required: true,
     },
     img_url2: {
         type: String,
-        required: true,
     },
     img_url3: {
         type: String,
-        required: true,
     },
     img_url4: {
         type: String,
-        required: true,
     },
     size: {
         type: String,

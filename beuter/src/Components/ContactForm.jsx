@@ -81,13 +81,13 @@ const ContactForm = (props) => {
         <ContactInfo>
           <Store>
             Store 2:
-            <Location>Room 44 – 42 Tôn Thất Thiệp, Quận 1, Saigon </Location>
+            <Location> Room 44 – 42 Tôn Thất Thiệp, Quận 1, Saigon </Location>
           </Store>
         </ContactInfo>
         <ContactInfo>
           <Store>
             Store 3:
-            <Location>(3rd Floor) 14C Ngô Thì Nhậm, Hoàn Kiếm, Hà Nội</Location>
+            <Location> 3rd Floor 14C Ngô Thì Nhậm, Hoàn Kiếm, Hà Nội</Location>
           </Store>
         </ContactInfo>
 

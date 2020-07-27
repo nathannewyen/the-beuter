@@ -14,14 +14,13 @@ const Container = styled.div``;
 
 const ListItems = styled.ul`
   @media ${media.desktopL} {
-    margin-left: 200px;
+    margin-left: 300px;
   }
 `;
 
 const Item = styled.li`
   list-type: none;
   display: inline-block;
-  margin: 20px;
 `;
 
 const ItemImage = styled.img`
@@ -46,7 +45,7 @@ const ItemPrice = styled.p`
   font-weight: 500;
 `;
 
-const Tops = (props) => {
+const Bottoms = (props) => {
   const nf = new Intl.NumberFormat();
   const [products, setProducts] = useState([]);
   const getProductsAPI = () => {
@@ -71,9 +70,9 @@ const Tops = (props) => {
         <ListItems>
           {products.map((product, i) => (
             <Item key={i}>
-              {product.category === "top" ? (
+              {product.category === "bottom" ? (
                 <ItemLink to={`/product/${product.title_url}`}>
-                  <ItemImage src={product.img_url1} />{" "}
+                  <ItemImage src={product.img_url1} />
                   <ItemTitle> {product.title} </ItemTitle>
                   <ItemPrice>{nf.format(product.price)} vnd</ItemPrice>
                 </ItemLink>
@@ -88,4 +87,4 @@ const Tops = (props) => {
   );
 };
 
-export default Tops;
+export default Bottoms;
