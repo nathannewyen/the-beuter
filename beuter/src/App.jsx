@@ -94,6 +94,8 @@ function App() {
 
   const [search, setSearch] = useState("");
 
+  const [response, setResponse] = useState({});
+
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };

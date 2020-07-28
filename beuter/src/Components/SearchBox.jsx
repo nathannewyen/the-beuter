@@ -13,9 +13,8 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  width: 500px;
+  width: 600px;
   margin: 10% auto;
-  border: 1px solid black;
 `;
 
 const CloseButton = styled(Link)`
@@ -38,10 +37,10 @@ const SearchBox = (props) => {
         opacity: props.show ? "1" : "0",
       }}
     >
-      <CloseButton to="#" onClick={props.close}>
-        CLOSE SEARCH ×
-      </CloseButton>
       <Container>
+        <CloseButton to="#" onClick={props.close}>
+          × CLOSE SEARCH
+        </CloseButton>
         <Children>{props.children}</Children>
       </Container>
     </Wrapper>

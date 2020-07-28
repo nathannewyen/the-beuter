@@ -54,7 +54,6 @@ const Bottoms = (props) => {
       .get("http://localhost:8000/api/products")
       .then((res) => {
         setProducts(res.data);
-        getProductsAPI();
       })
       .catch((err) => {
         console.log(err);
