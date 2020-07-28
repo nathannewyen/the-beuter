@@ -15,22 +15,22 @@ const Wrapper = styled.div`
 const Container = styled.div`
   width: 500px;
   margin: 10% auto;
+  border: 1px solid black;
 `;
 
 const CloseButton = styled(Link)`
   border: 0px;
   display: block;
   color: black;
-  font-size: ${fontSizes.md};
+  font-size: ${fontSizes.sm};
   font-weight: 600;
   text-decoration: none;
-  float: right;
+  letter-spacing: 0.5px;
 `;
 
 const Children = styled.div``;
 
 const SearchBox = (props) => {
-
   return (
     <Wrapper
       style={{
@@ -38,10 +38,10 @@ const SearchBox = (props) => {
         opacity: props.show ? "1" : "0",
       }}
     >
+      <CloseButton to="#" onClick={props.close}>
+        CLOSE SEARCH ×
+      </CloseButton>
       <Container>
-        <CloseButton to="#" onClick={props.close}>
-          ×
-        </CloseButton>
         <Children>{props.children}</Children>
       </Container>
     </Wrapper>

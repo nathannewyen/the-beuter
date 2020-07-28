@@ -41,28 +41,22 @@ const SideNav = (props) => {
     <Sidenav>
       <AllItems>
         <ListItems to="/new-arrival">NEW ARRIVAL</ListItems>
-        <ListItems to="/product-category/top">
-          TOPS
-          <Item to="/">T-Shirts</Item>
-          <Item to="/">Shirts</Item>
-          <Item to="/">Hoodies</Item>
-          <Item to="/">Sweaters</Item>
-          <Item to="/">Jackets & Coats</Item>
-        </ListItems>
-        <ListItems to="/product-category/bottom">
-          BOTTOMS
-          <Item to="/"> Pants </Item>
-          <Item to="/"> Shorts </Item>
-          <Item to="/"> Jeans </Item>
-        </ListItems>
+        <ListItems to="/product-category/top">TOPS</ListItems>
+        <Item to="/">T-Shirts</Item>
+        <Item to="/">Shirts</Item>
+        <Item to="/">Hoodies</Item>
+        <Item to="/">Sweaters</Item>
+        <Item to="/">Jackets & Coats</Item>
+        <ListItems to="/product-category/bottom">BOTTOMS</ListItems>
+        <Item to="/"> Pants </Item>
+        <Item to="/"> Shorts </Item>
+        <Item to="/"> Jeans </Item>
 
         <ListItems to="#">BAGS & BACKPACKS</ListItems>
         <ListItems to="#">ACCESSORIES</ListItems>
-        <ListItems to="#">
-          COLLECTION
-          <Item to="/"> SPRING SUMMER 2020 </Item>
-          <Item to="/"> BLANKS BY BEUTER </Item>
-        </ListItems>
+        <ListItems to="#">COLLECTION</ListItems>
+        <Item to="/"> SPRING SUMMER 2020 </Item>
+        <Item to="/"> BLANKS BY BEUTER </Item>
         <ListItems to="#">CAMPAIGN</ListItems>
         <ListItems to="/about-us">ABOUT US</ListItems>
         <ListItems to="/contact">CONTACT</ListItems>

@@ -6,7 +6,7 @@ import media from "../Styles/media";
 const { fontSizes, fonts } = theme;
 
 const FooterWrapper = styled.div`
-  padding: 10px 0;
+  padding: 20px 0;
   font-family: ${fonts.Gotham};
   font-size: ${fontSizes.sm};
   font-weight: 500;
