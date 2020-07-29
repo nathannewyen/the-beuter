@@ -39,7 +39,14 @@ const SearchBox = (props) => {
     >
       <Container>
         <CloseButton to="#" onClick={props.close}>
-          × CLOSE SEARCH
+          CLOSE SEARCH{" "}
+          <svg width="8" height="9" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M4.707 4.5l3.147 3.146a.5.5 0 1 1-.708.708L4 5.207.854 8.354a.5.5 0 1 1-.708-.708L3.293 4.5.146 1.354A.5.5 0 1 1 .854.646L4 3.793 7.146.646a.5.5 0 1 1 .708.708L4.707 4.5z"
+              fill="#1F1E1E"
+              fillRule="nonzero"
+            ></path>
+          </svg>
         </CloseButton>
         <Children>{props.children}</Children>
       </Container>
