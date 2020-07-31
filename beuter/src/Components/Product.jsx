@@ -190,7 +190,7 @@ const Product = (props) => {
             <Size>XL</Size>
           </SizeInfo>
         </SelectSizes>
-        <BuyButton type="submit" onClick={props.addBasket}>
+        <BuyButton type="submit" onClick={() => props.addBasket({ title })}>
           Add to Cart
         </BuyButton>
         <SideNavFooter>
