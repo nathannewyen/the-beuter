@@ -26,7 +26,7 @@ const Item = styled.li`
 
 const ItemImage = styled.img`
   src: url(${(props) => props.src});
-  width: 600px;
+  width: 400px;
 `;
 
 const ItemLink = styled(Link)`
