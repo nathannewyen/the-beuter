@@ -21,6 +21,9 @@ const ListItems = styled.ul`
 const Item = styled.li`
   list-type: none;
   display: inline-block;
+  @media ${media.laptopL} {
+    margin: 30px 0;
+  }
 `;
 
 const ItemImage = styled.img`

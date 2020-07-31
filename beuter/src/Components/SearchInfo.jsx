@@ -101,6 +101,7 @@ const SearchInfo = (props) => {
 
   useEffect(() => {
     getProductsAPI();
+    document.title = `You searched for ${props.title} - The Beuter`;
   }, [props]);
 
   return (

@@ -16,9 +16,12 @@ import Footer from "./Components/Footer";
 import GlobalStyle from "./Styles/GlobalStyle";
 
 import { Router, Link, navigate } from "@reach/router";
+import { connect } from "react-redux";
+import { Provider } from "react-redux";
+import store from "./store";
 import styled from "styled-components";
 import theme from "./Styles/theme";
-import media from "./Styles/media";
+import { addBasket } from "./actions/addAction";
 const { fontSizes } = theme;
 
 const NavBar = styled.div`
@@ -137,59 +140,65 @@ function App() {
   `;
 
   return (
-    <div>
-      <GlobalStyle />
-      <NavBar>
-        <Link to="/">
-          <LogoNav src="https://thebeuter.com/wp-content/uploads/2020/04/logo-black.png" />
-        </Link>
-        <Utilities>
-          <UlityItem>
-            <SearchProduct type="submit" onClick={openModalHandler}>
-              SEARCH A PRODUCT
-              <SearchIcon className="fal fa-search fa-rotate-90" />
-            </SearchProduct>
-          </UlityItem>
-          <UlityItem>
-            <ShoppingBag to="/"> SHOPPING BAG</ShoppingBag>
-          </UlityItem>
-        </Utilities>
-        {isShowing ? <SearchBoxModal onClick={closeModalHandler} /> : null}
-        <SearchBox show={isShowing} close={closeModalHandler}>
-          <SearchTitle>What are you looking for?</SearchTitle>
-          <FormSearch onSubmit={onSubmit}>
-            <SearchInput
-              type="text"
-              placeholder="Type something to search"
-              onChange={(e) => setSearchTerm(e.target.value)}
-              defaultValue={searchTerm}
-            />
-            <SearchButton type="submit" value="Search" />
-          </FormSearch>
-        </SearchBox>
-      </NavBar>
-      <Wrapper>
-        <Container>
-          <SideNav />
-          <RouterStyle>
-            <Router>
-              <ContactForm path="/contact" />
-              <SizeChart path="/size-chart" />
-              <ShippingAndReturn path="/shipping-return" />
-              <PrivacyAndPolicy path="/privacy-policy" />
-              <AboutUs path="/about-us" />
-              <ShopAllProducts path="/" />
-              <NewArrival path="/shop/new-arrival" />
-              <Tops path="/product-category/top" />
-              <Bottoms path="/product-category/bottom" />
-              <Product path="/product/:title_url" />
-              <SearchInfo path="/search/:title" searchTerm={searchTerm} />
-            </Router>
-          </RouterStyle>
-        </Container>
-        <Footer />
-      </Wrapper>
-    </div>
+    <>
+      <Provider store={store}>
+        <GlobalStyle />
+        <NavBar>
+          <Link to="/">
+            <LogoNav src="https://thebeuter.com/wp-content/uploads/2020/04/logo-black.png" />
+          </Link>
+          <Utilities>
+            <UlityItem>
+              <SearchProduct type="submit" onClick={openModalHandler}>
+                SEARCH A PRODUCT
+                <SearchIcon className="fal fa-search fa-rotate-90" />
+              </SearchProduct>
+            </UlityItem>
+            <UlityItem>
+              <ShoppingBag to="/"> SHOPPING BAG</ShoppingBag>
+            </UlityItem>
+          </Utilities>
+          {isShowing ? <SearchBoxModal onClick={closeModalHandler} /> : null}
+          <SearchBox show={isShowing} close={closeModalHandler}>
+            <SearchTitle>What are you looking for?</SearchTitle>
+            <FormSearch onSubmit={onSubmit}>
+              <SearchInput
+                type="text"
+                placeholder="Type something to search"
+                onChange={(e) => setSearchTerm(e.target.value)}
+                defaultValue={searchTerm}
+              />
+              <SearchButton type="submit" value="Search" />
+            </FormSearch>
+          </SearchBox>
+        </NavBar>
+        <Wrapper>
+          <Container>
+            <SideNav />
+            <RouterStyle>
+              <Router>
+                <ContactForm path="/contact" />
+                <SizeChart path="/size-chart" />
+                <ShippingAndReturn path="/shipping-return" />
+                <PrivacyAndPolicy path="/privacy-policy" />
+                <AboutUs path="/about-us" />
+                <ShopAllProducts path="/" />
+                <NewArrival path="/shop/new-arrival" />
+                <Tops path="/product-category/top" />
+                <Bottoms path="/product-category/bottom" />
+                <Product path="/product/:title_url" />
+                <SearchInfo
+                  path="/search/:title"
+                  searchTerm={searchTerm}
+                  title="Profile"
+                />
+              </Router>
+            </RouterStyle>
+          </Container>
+          <Footer />
+        </Wrapper>
+      </Provider>
+    </>
   );
 }
 

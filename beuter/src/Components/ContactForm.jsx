@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "@reach/router";
 import theme from "../Styles/theme";
-import media from "../Styles/media";
 const { fontSizes } = theme;
 
 const ContactWrapper = styled.div`

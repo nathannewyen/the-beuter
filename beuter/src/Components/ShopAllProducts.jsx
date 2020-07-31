@@ -19,11 +19,10 @@ const ListItems = styled.ul`
 
 const Item = styled.li`
   list-type: none;
-  display: inline-block;
-  margin: 20px 60px;
   text-align: center;
+  display: inline-block;
   @media ${media.laptopL} {
-    margin: 20px;
+    margin: 30px 0;
   }
 `;
 
@@ -44,7 +43,7 @@ const ItemTitle = styled.p`
   font-size: ${fontSizes.xs};
   font-weight: 500;
   @media ${media.laptop} {
-    width: 200px;
+    width: 250px;
     margin: 0 auto;
   }
 `;
