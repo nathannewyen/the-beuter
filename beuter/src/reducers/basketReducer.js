@@ -3,23 +3,28 @@ import {
     GET_NUMBERS_BASKET
 } from '../actions/type'
 
+let productAPI = {}
+
+fetch('http://localhost:8000/api/products')
+    .then((res) => res.json())
+    .then(data => console.log(data))
+
+
 const initialState = {
     basketNumbers: 0,
-    carCost: 0,
+    cartCost: 0,
     products: {
 
     }
 }
 
+
 export default (state = initialState, action) => {
     switch (action.type) {
         case ADD_PRODUCT_BASKET:
-            let addQuantity = {
-                ...state.products[action.payload]
-            }
-            console.log(addQuantity)
             return {
-                basketNumbers: state.basketNumbers + 1
+                ...state,
+                basketNumbers: state.basketNumbers + 1,
             };
         case GET_NUMBERS_BASKET:
             return {

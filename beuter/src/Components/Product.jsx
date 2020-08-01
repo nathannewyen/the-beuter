@@ -178,7 +178,7 @@ const Product = (props) => {
         {fit ? <Info>• {fit}</Info> : <span />}
         {size2 ? <Info>• {size2}</Info> : <span />}
         {fit2 ? <Info>• {fit2}</Info> : <span />}
-        <ItemPrice>{nf.format(price)} vnd</ItemPrice>
+        {/* <ItemPrice>{nf.format(price)} vnd</ItemPrice> */}
         <SelectSizes>
           <SizeInfo value="M">
             <Size>M</Size>

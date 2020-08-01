@@ -125,10 +125,10 @@ const SearchInfo = (props) => {
               <ItemLink to={`/product/${filteredItem.title_url}`}>
                 <ItemImage src={filteredItem.img_url1} />
                 <ItemTitle> {filteredItem.title} </ItemTitle>
-                <ItemPrice>
+                {/* <ItemPrice>
                   {nf.format(filteredItem.price)}
                   vnd
-                </ItemPrice>
+                </ItemPrice> */}
               </ItemLink>
             </Item>
           ))}
