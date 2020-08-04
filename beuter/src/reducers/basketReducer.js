@@ -2,8 +2,8 @@ import {
     ADD_PRODUCT_BASKET,
     GET_NUMBERS_BASKET,
     LOADING,
-    SUCCESS,
-} from '../actions/type'
+    SUCCESS
+} from '../actions/type';
 
 const initialState = {
     products: [],
@@ -11,9 +11,8 @@ const initialState = {
     basketNumbers: 0,
     cartCost: 0,
     numbers: 0,
-    inCart: false,
-}
-
+    inCart: false
+};
 
 export default (state = initialState, action) => {
     switch (action.type) {
@@ -33,19 +32,16 @@ export default (state = initialState, action) => {
                     err: ''
             };
         case ADD_PRODUCT_BASKET:
-            let products = [...state.products, action.payload]
-            let numbers = state.numbers += 1;
-            let inCart = state.inCart = true;
-            let addQuantity = {
-                products,
-            };
+            let numbers = (state.numbers += 1);
+            let inCart = (state.inCart = true);
+            let product = state.products;
             return {
                 ...state,
                 basketNumbers: state.basketNumbers + 1,
-                    cartCost: state.cartCost + addQuantity.products[0].price,
-                    products: addQuantity,
+                    cartCost: state.cartCost + action.payload.price,
+                    product: product.push(action.payload),
                     numbers: numbers,
-                    inCart: inCart,
+                    inCart: inCart
             };
         case GET_NUMBERS_BASKET:
             return {
@@ -54,4 +50,4 @@ export default (state = initialState, action) => {
         default:
             return state;
     }
-}
+};
