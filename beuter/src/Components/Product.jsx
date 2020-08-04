@@ -7,6 +7,8 @@ import theme from "../Styles/theme";
 import { connect } from "react-redux";
 import { addBasket } from "../actions/addAction";
 
+import { getSmurfs } from "../actions/type";
+
 const { fontSizes } = theme;
 
 const ProductWrapper = styled.div`
@@ -79,6 +81,7 @@ const SizeInfo = styled.span`
   border: 1.2px solid #d1d1d1;
   border-radius: 0px;
   height: 25px;
+  cursor: pointer;
   display: inline-block;
 `;
 
@@ -178,7 +181,7 @@ const Product = (props) => {
         {fit ? <Info>• {fit}</Info> : <span />}
         {size2 ? <Info>• {size2}</Info> : <span />}
         {fit2 ? <Info>• {fit2}</Info> : <span />}
-        {/* <ItemPrice>{nf.format(price)} vnd</ItemPrice> */}
+        <ItemPrice>{nf.format(price)} vnd</ItemPrice>
         <SelectSizes>
           <SizeInfo value="M">
             <Size>M</Size>
@@ -190,7 +193,10 @@ const Product = (props) => {
             <Size>XL</Size>
           </SizeInfo>
         </SelectSizes>
-        <BuyButton type="submit" onClick={() => props.addBasket({ title })}>
+        <BuyButton
+          type="submit"
+          onClick={() => props.addBasket({ title, price, img_url1 })}
+        >
           Add to Cart
         </BuyButton>
         <SideNavFooter>

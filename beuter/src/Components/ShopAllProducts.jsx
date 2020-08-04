@@ -80,10 +80,10 @@ const ShopAllProducts = (props) => {
             <ItemLink to={`/product/${product.title_url}`}>
               <ItemImage src={product.img_url1} />
               <ItemTitle> {product.title} </ItemTitle>
-              {/* <ItemPrice>
+              <ItemPrice>
                 {nf.format(product.price)}
                 vnd
-              </ItemPrice> */}
+              </ItemPrice>
             </ItemLink>
           </Item>
         ))}

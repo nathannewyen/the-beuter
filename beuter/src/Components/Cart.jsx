@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Fragment } from "react";
+import { connect } from "react-redux";
 import { Link } from "@reach/router";
 import styled from "styled-components";
 import theme from "../Styles/theme";
@@ -46,7 +47,29 @@ const CheckOutButton = styled.button`
   font-weight: bold;
 `;
 
-const Cart = (props) => {
+const ProductInfo = styled.div``;
+
+const Image = styled.img`
+  src: url(${(props) => props.src});
+  width: 300px;
+`;
+
+function Cart({ basketProps }) {
+  let productsInCart = [];
+
+  if (basketProps.inCart) {
+    productsInCart.push(basketProps.products);
+  }
+  console.log(productsInCart);
+
+  let total = 0;
+
+  productsInCart.map((cartProduct) => {
+    total = total + cartProduct.price;
+  });
+
+  console.log(total);
+
   return (
     <Wrapper>
       <Container>
@@ -55,6 +78,9 @@ const Cart = (props) => {
           <LinkShop to="/">Shop more</LinkShop> or{" "}
           <LinkShop to="/">Check out now</LinkShop>
         </Info>
+
+        <ProductInfo></ProductInfo>
+
         <LineDivide />
         <Info>
           Subtotal <PriceInfo>2,100,000 vnd</PriceInfo>
@@ -72,6 +98,10 @@ const Cart = (props) => {
       </Container>
     </Wrapper>
   );
-};
+}
 
-export default Cart;
+const mapStateToProps = (state) => ({
+  basketProps: state.basketState,
+});
+
+export default connect(mapStateToProps)(Cart);

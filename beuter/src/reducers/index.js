@@ -5,5 +5,5 @@ import {
 import basketReducer from './basketReducer'
 
 export default combineReducers({
-    basketState: basketReducer
+    basketState: basketReducer,
 })
