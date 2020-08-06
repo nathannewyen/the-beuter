@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const ADD_PRODUCT_BASKET = 'ADD_PRODUCT_BASKET';
 export const GET_NUMBERS_BASKET = 'GET_NUMBERS_BASKET';
+export const DELETE_SOME_ITEM = 'DELETE_SOME_ITEM';
 export const LOADING = "LOADING";
 export const SUCCESS = "SUCCESS";
 export const FAILURE = "FAILURE";

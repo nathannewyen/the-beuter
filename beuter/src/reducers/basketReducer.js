@@ -1,6 +1,7 @@
 import {
     ADD_PRODUCT_BASKET,
     GET_NUMBERS_BASKET,
+    DELETE_SOME_ITEM,
     LOADING,
     SUCCESS
 } from '../actions/type';
@@ -15,6 +16,7 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
+    const nf = new Intl.NumberFormat();
     switch (action.type) {
         case LOADING:
             return {
@@ -32,7 +34,6 @@ export default (state = initialState, action) => {
                     err: ''
             };
         case ADD_PRODUCT_BASKET:
-            let numbers = (state.numbers += 1);
             let inCart = (state.inCart = true);
             let products = state.products;
             let foundProduct = products.find(prod => prod.title === action.payload.title);
@@ -47,13 +48,22 @@ export default (state = initialState, action) => {
                 ...state,
                 basketNumbers: state.basketNumbers + 1,
                     cartCost: state.cartCost + action.payload.price,
-                    product: products,
-                    numbers: numbers,
+                    products: products,
                     inCart: inCart
             };
         case GET_NUMBERS_BASKET:
             return {
                 ...state
+            };
+        case DELETE_SOME_ITEM:
+            let items = state.products.filter(itemDelete => itemDelete.title != action.payload);
+            console.log(items);
+            return {
+                ...state,
+                products: items,
+                    cartCost: state.cartCost - items.price,
+                    basketNumbers: state.basketNumbers - items.quantity,
+
             };
         default:
             return state;
