@@ -13,7 +13,6 @@ import {
     saveState
 } from './sessionStorage';
 
-const initialState = {};
 const middleware = [thunk]
 
 const persistedState = loadState();
