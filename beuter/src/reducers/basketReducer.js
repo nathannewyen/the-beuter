@@ -34,12 +34,20 @@ export default (state = initialState, action) => {
         case ADD_PRODUCT_BASKET:
             let numbers = (state.numbers += 1);
             let inCart = (state.inCart = true);
-            let product = state.products;
+            let products = state.products;
+            let foundProduct = products.find(prod => prod.title === action.payload.title);
+
+            if (foundProduct) {
+                foundProduct.quantity++;
+            } else {
+                action.payload.quantity = 1;
+                products.push(action.payload);
+            }
             return {
                 ...state,
                 basketNumbers: state.basketNumbers + 1,
                     cartCost: state.cartCost + action.payload.price,
-                    product: product.push(action.payload),
+                    product: products,
                     numbers: numbers,
                     inCart: inCart
             };
