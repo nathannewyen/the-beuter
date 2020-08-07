@@ -53,26 +53,42 @@ const ItemPrice = styled.p`
 	font-weight: 500;
 `;
 
-const SelectSizes = styled.form`padding: 5px 0;`;
-
-const Size = styled.option`
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	vertical-align: bottom;
-	font-size: ${fontSizes.sm};
-	font-weight: 500;
+const SelectSizesForm = styled.form`
+	padding: 5px 0;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	margin-bottom: 2rem;
 `;
 
-const SizeInfo = styled.span`
-	position: relative;
-	margin-right: 10px;
-	width: 25px;
-	border: 1.2px solid #d1d1d1;
-	border-radius: 0px;
-	height: 25px;
+const SizeLabel = styled.label`margin-right: 0.6rem;`;
+
+const SizeSpan = styled.span`
 	cursor: pointer;
-	display: inline-block;
+	display: flex;
+	align-items: flex-end;
+	min-width: 22px;
+	height: 22px;
+	border: #d1d1d1 solid 1px;
+	color: #d1d1d1;
+	font-size: 9px;
+	font-weight: 500;
+	line-height: 5px;
+	padding: 2px;
+	:hover {
+		color: black;
+	}
+`;
+
+const SizeInput = styled.input`
+	visibility: hidden;
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	:checked ~ span {
+		color: black;
+		border: 1px solid black;
+	}
 `;
 
 const BuyButton = styled.button`
@@ -116,6 +132,15 @@ const Product = (props) => {
 	const [ size2, setSize2 ] = useState(props.size2);
 	const [ fit, setFit ] = useState(props.fit);
 	const [ fit2, setFit2 ] = useState(props.fit2);
+
+	const [ pickSize, setPickSize ] = useState('');
+
+	const [ isSelected, setSelected ] = useState(false);
+
+	const onChange = (value) => {
+		setPickSize(value);
+		setSelected(true);
+	};
 
 	useEffect(() => {
 		getOneProduct();
@@ -172,20 +197,21 @@ const Product = (props) => {
 				{size2 ? <Info>• {size2}</Info> : <span />}
 				{fit2 ? <Info>• {fit2}</Info> : <span />}
 				<ItemPrice>{nf.format(price)} vnd</ItemPrice>
-				<SelectSizes>
-					<SizeInfo value="M">
-						<Size>M</Size>
-					</SizeInfo>
-					<SizeInfo value="L">
-						<Size>L</Size>
-					</SizeInfo>
-					<SizeInfo value="XL">
-						<Size>XL</Size>
-					</SizeInfo>
-				</SelectSizes>
-				<BuyButton type="submit" onClick={() => props.addBasket({ title, price, img_url1 })}>
-					Add to Cart
-				</BuyButton>
+				<SelectSizesForm onSubmit={() => props.addBasket({ title, price, img_url1, pickSize: pickSize })}>
+					<SizeLabel>
+						<SizeInput onChange={() => onChange('M')} type="radio" name="pickSize" value="M" />
+						<SizeSpan className="size">M</SizeSpan>
+					</SizeLabel>
+					<SizeLabel>
+						<SizeInput onChange={() => onChange('L')} type="radio" name="pickSize" value="L" />
+						<SizeSpan className="size">L</SizeSpan>
+					</SizeLabel>
+					<SizeLabel>
+						<SizeInput onChange={() => onChange('XL')} type="radio" name="pickSize" value="XL" />
+						<SizeSpan className="size">XL</SizeSpan>
+					</SizeLabel>
+					{isSelected ? <BuyButton type="submit">Add to Cart</BuyButton> : null}
+				</SelectSizesForm>
 				<SideNavFooter>
 					<ItemInfo to="/size-chart">Size Chart</ItemInfo>
 					<ItemInfo to="/shipping-return">Shipping and Return</ItemInfo>

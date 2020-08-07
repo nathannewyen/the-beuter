@@ -42,6 +42,7 @@ const CheckOutButton = styled.button`
 	letter-spacing: 2px;
 	cursor: pointer;
 	font-weight: bold;
+	color: white;
 `;
 
 const LinkStyle = styled(Link)`
@@ -68,6 +69,11 @@ const ProductTitle = styled.p`
 	padding-left: 20px;
 	width: 280px;
 	font-weight: 500;
+`;
+
+const ProductSize = styled.p`
+	font-size: ${fontSizes.xs};
+	padding-left: 20px;
 `;
 
 const ProductQuantity = styled.span`
@@ -110,6 +116,8 @@ const Cart = ({ basketProps, deleteItem }) => {
 		productsInCart = [];
 	}
 
+	console.log(productsInCart);
+
 	let shippingFee = 25000;
 	let additionalShippingFee = 15000;
 	return (
@@ -126,6 +134,7 @@ const Cart = ({ basketProps, deleteItem }) => {
 						</Infor>
 						<Infor>
 							<ProductTitle>{product.title}</ProductTitle>
+							<ProductSize>Size: {product.pickSize}</ProductSize>
 							<ProductPrice>
 								<ProductQuantity>{product.quantity} x </ProductQuantity>
 								{nf.format(product.price)} vnd
@@ -159,9 +168,9 @@ const Cart = ({ basketProps, deleteItem }) => {
 					Total
 					<PriceInfo> {nf.format(basketProps.cartCost + additionalShippingFee + shippingFee)} vnd</PriceInfo>
 				</Info>
-				<CheckOutButton type="submit">
-					<LinkStyle to="/checkout">Proceed to check out</LinkStyle>
-				</CheckOutButton>
+				<LinkStyle to="/checkout">
+					<CheckOutButton type="submit">Proceed to check out</CheckOutButton>
+				</LinkStyle>
 			</Container>
 		</Wrapper>
 	);

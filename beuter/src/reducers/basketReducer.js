@@ -16,7 +16,6 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-    const nf = new Intl.NumberFormat();
     switch (action.type) {
         case LOADING:
             return {
