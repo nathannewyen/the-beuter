@@ -56,13 +56,12 @@ export default (state = initialState, action) => {
                 ...state
             };
         case DELETE_SOME_ITEM:
-            let items = state.products.filter(itemDelete => itemDelete.title != action.payload);
-            console.log(items);
+            let items = state.products.filter(itemDelete => itemDelete.title != action.payload.title);
             return {
                 ...state,
                 products: items,
-                    cartCost: state.cartCost - items.price,
-                    basketNumbers: state.basketNumbers - items.quantity,
+                    cartCost: state.cartCost - (action.payload.price * action.payload.quantity),
+                    basketNumbers: state.basketNumbers - action.payload.quantity,
 
             };
         default:

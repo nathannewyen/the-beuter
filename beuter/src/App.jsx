@@ -13,6 +13,7 @@ import AboutUs from './Components/AboutUs';
 import Cart from './Components/Cart';
 import Tops from './Components/Tops';
 import Bottoms from './Components/Bottoms';
+import Checkout from './Components/Checkout';
 import Footer from './Components/Footer';
 import GlobalStyle from './Styles/GlobalStyle';
 
@@ -187,6 +188,7 @@ function App(props) {
 							<Product path="/product/:title_url" />
 							<SearchInfo path="/search/:title" searchTerm={searchTerm} title="Profile" />
 							<Cart path="/cart" />
+							<Checkout path="/checkout" />
 						</Router>
 					</RouterStyle>
 				</Container>

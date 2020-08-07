@@ -37,12 +37,16 @@ const CheckOutButton = styled.button`
 	width: 100%;
 	padding: 5px;
 	background-color: black;
-	color: white;
 	border: 0;
 	font-size: ${fontSizes.s};
 	letter-spacing: 2px;
 	cursor: pointer;
 	font-weight: bold;
+`;
+
+const LinkStyle = styled(Link)`
+color: white;
+text-decoration: none;
 `;
 
 const ProductInfo = styled.div`
@@ -108,7 +112,6 @@ const Cart = ({ basketProps, deleteItem }) => {
 
 	let shippingFee = 25000;
 	let additionalShippingFee = 15000;
-	let subTotal = 0;
 	return (
 		<Wrapper>
 			<Container>
@@ -128,7 +131,12 @@ const Cart = ({ basketProps, deleteItem }) => {
 								{nf.format(product.price)} vnd
 								<RemoveButton
 									type="submit"
-									onClick={() => deleteItem(product.title, product.quantity, product.price)}
+									onClick={() =>
+										deleteItem({
+											title: product.title,
+											quantity: product.quantity,
+											price: product.price
+										})}
 								>
 									Remove
 								</RemoveButton>
@@ -148,9 +156,12 @@ const Cart = ({ basketProps, deleteItem }) => {
 					Additional fee <PriceInfo>{nf.format(additionalShippingFee)} vnd</PriceInfo>
 				</Info>
 				<Info>
-					Total <PriceInfo>{nf.format(basketProps.cartCost)} vnd</PriceInfo>
+					Total
+					<PriceInfo> {nf.format(basketProps.cartCost + additionalShippingFee + shippingFee)} vnd</PriceInfo>
 				</Info>
-				<CheckOutButton type="submit">Proceed to check out</CheckOutButton>
+				<CheckOutButton type="submit">
+					<LinkStyle to="/checkout">Proceed to check out</LinkStyle>
+				</CheckOutButton>
 			</Container>
 		</Wrapper>
 	);
