@@ -55,7 +55,7 @@ export default (state = initialState, action) => {
                 ...state
             };
         case DELETE_SOME_ITEM:
-            let items = state.products.filter(itemDelete => itemDelete.title != action.payload.title);
+            let items = state.products.filter(itemDelete => itemDelete.title !== action.payload.title);
             return {
                 ...state,
                 products: items,
