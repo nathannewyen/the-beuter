@@ -16,7 +16,7 @@ const ProductWrapper = styled.div`
 
 const ProductContainer = styled.div`
   display: inline-block;
-`;
+`;  
 
 const ProductImage = styled.div`
   width: 100%;
@@ -25,7 +25,7 @@ const ProductImage = styled.div`
 
 const Image = styled.img`
   src: url(${(props) => props.src});
-  width: 900px;
+  width: 550px;
 `;
 
 const SideNav = styled.div`
