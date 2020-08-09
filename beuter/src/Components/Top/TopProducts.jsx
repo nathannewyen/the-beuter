@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "@reach/router";
-import media from "../Styles/media";
-import theme from "../Styles/theme";
+import media from "../../Styles/media";
+import theme from "../../Styles/theme";
+
 const { fontSizes } = theme;
 
 // Styling
@@ -61,7 +62,7 @@ const ItemPrice = styled.p`
   font-weight: 500;
 `;
 
-const AllProducts = ({ products, loading }) => {
+const TopProducts = ({ products, loading }) => {
   const nf = new Intl.NumberFormat();
 
   if (loading) {
@@ -73,18 +74,17 @@ const AllProducts = ({ products, loading }) => {
       <ListItems>
         {products.map((product, i) => (
           <Item key={i}>
-            <ItemLink to={`/product/${product.title_url}`}>
-              <ItemImage src={product.img_url1} />
-              <ItemTitle> {product.title} </ItemTitle>
-              <ItemPrice>
-                {nf.format(product.price)}
-                vnd
-              </ItemPrice>
-            </ItemLink>
+            {product.category === "top" ? (
+              <ItemLink to={`/product/${product.title_url}`}>
+                <ItemImage src={product.img_url1} />{" "}
+                <ItemTitle> {product.title} </ItemTitle>
+                <ItemPrice>{nf.format(product.price)} vnd</ItemPrice>
+              </ItemLink>
+            ) : null}
           </Item>
         ))}
       </ListItems>
     </ShopWrapper>
   );
 };
-export default AllProducts;
+export default TopProducts;

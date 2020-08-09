@@ -44,6 +44,8 @@ const FormInput = styled.input`
   width: 100%;
   margin-top: 10px;
   padding: 5px;
+  font-family: system-ui;
+  font-size: ${fontSizes.s};
 `;
 
 const Grid = styled.div`
@@ -56,6 +58,8 @@ const ShippingFormInput = styled.input`
   padding: 5px;
   width: 100%;
   margin-top: 10px;
+  font-family: system-ui;
+  font-size: ${fontSizes.s};
 `;
 
 const FormTextarea = styled.textarea`
@@ -63,13 +67,15 @@ const FormTextarea = styled.textarea`
   resize: none;
   height: 150px;
   margin-top: 10px;
-  padding: 10px 5px;
+  padding: 5px;
   width: 100%;
+  font-family: system-ui;
+  font-size: ${fontSizes.s};
 `;
 
 const PlaceOrderButton = styled.button`
   width: 100%;
-  padding: 10px;
+  padding: 10px 0 5px;
   margin-top: 30px;
   background-color: black;
   border: 0;
@@ -134,6 +140,7 @@ const Infor = styled.div`
 
 const Info = styled.p`
   font-size: ${fontSizes.xs};
+  margin-top: 1rem;
 `;
 const PriceInfo = styled.span`
   font-size: ${fontSizes.xs};

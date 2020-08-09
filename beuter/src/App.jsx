@@ -11,12 +11,12 @@ import ShippingAndReturn from "./Components/ShippingAndReturn";
 import PrivacyAndPolicy from "./Components/PrivacyAndPolicy";
 import AboutUs from "./Components/AboutUs";
 import Cart from "./Components/Cart";
-import Tops from "./Components/Tops";
+import Tops from "./Components/Top/Tops";
 import Bottoms from "./Components/Bottoms";
 import Checkout from "./Components/Checkout";
 import Footer from "./Components/Footer";
 
-import Form from "./Components/Form";
+// import Form from "./Components/Form";
 
 import GlobalStyle from "./Styles/GlobalStyle";
 import { Router, Link, navigate } from "@reach/router";
@@ -57,7 +57,7 @@ const SearchProduct = styled.span`
 const Icon = styled.span`
   font-size: ${fontSizes.sm};
   font-weight: 500;
-  ${media.tablet`font-size: ${fontSizes.md}`};
+  ${media.tablet`font-size: 14px`};
 `;
 
 const CartNumb = styled.span`
@@ -87,6 +87,8 @@ const SearchInput = styled.input`
   letter-spacing: 1px;
   width: 100%;
   padding: 10px;
+  font-family: system-ui;
+  font-size: ${fontSizes.s};
   ::placeholder {
     color: #b0b0b0;
   }
@@ -167,7 +169,7 @@ const HamburgerLine = styled.div`
   }
 `;
 
-function App(props) {
+const App = (props) => {
   useEffect(() => {
     getNumbers();
   }, []);
@@ -206,6 +208,7 @@ function App(props) {
     src: url(${(props) => props.src});
     width: 180px;
     opacity: ${opacity};
+    position: fixed;
 
     ${media.tablet`
     width: 140px;
@@ -306,7 +309,6 @@ function App(props) {
               />
               <Cart path="/cart" />
               <Checkout path="/checkout" />
-              <Form path="/add/form" />
             </Router>
           </RouterStyle>
         </Container>
@@ -314,7 +316,7 @@ function App(props) {
       </Wrapper>
     </div>
   );
-}
+};
 
 const mapStateToProps = (state) => ({
   basketProps: state.basketState,

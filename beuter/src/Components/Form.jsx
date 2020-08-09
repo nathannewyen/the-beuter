@@ -66,7 +66,6 @@ const Form = (props) => {
           <div className="col-sm-10">
             <input
               type="text"
-              className="form-control"
               onChange={(e) => setTitle(e.target.value)}
               value={title}
             />
@@ -79,7 +78,6 @@ const Form = (props) => {
           <div className="col-sm-10">
             <input
               type="text"
-              className="form-control"
               onChange={(e) => setTitleUrl(e.target.value)}
               value={title_url}
             />
@@ -93,7 +91,6 @@ const Form = (props) => {
           <div className="col-sm-10">
             <input
               type="number"
-              className="form-control"
               onChange={(e) => setPrice(e.target.value)}
               value={price}
               placeholder="$"
@@ -108,7 +105,6 @@ const Form = (props) => {
           <div className="col-sm-10">
             <input
               type="text"
-              className="form-control"
               onChange={(e) => setDescription1(e.target.value)}
               value={description1}
             />
@@ -121,7 +117,6 @@ const Form = (props) => {
           <div className="col-sm-10">
             <input
               type="text"
-              className="form-control"
               onChange={(e) => setDescription2(e.target.value)}
               value={description2}
             />
@@ -134,7 +129,6 @@ const Form = (props) => {
           <div className="col-sm-10">
             <input
               type="text"
-              className="form-control"
               onChange={(e) => setDescription3(e.target.value)}
               value={description3}
             />
@@ -147,7 +141,6 @@ const Form = (props) => {
           <div className="col-sm-10">
             <input
               type="text"
-              className="form-control"
               onChange={(e) => setDescription4(e.target.value)}
               value={description4}
             />
@@ -160,7 +153,6 @@ const Form = (props) => {
           <div className="col-sm-10">
             <input
               type="text"
-              className="form-control"
               onChange={(e) => setDescription5(e.target.value)}
               value={description5}
             />
@@ -173,7 +165,6 @@ const Form = (props) => {
           <div className="col-sm-10">
             <input
               type="text"
-              className="form-control"
               onChange={(e) => setImgUrl1(e.target.value)}
               value={img_url1}
             />
@@ -186,7 +177,6 @@ const Form = (props) => {
           <div className="col-sm-10">
             <input
               type="text"
-              className="form-control"
               onChange={(e) => setImgUrl2(e.target.value)}
               value={img_url2}
             />
@@ -199,7 +189,6 @@ const Form = (props) => {
           <div className="col-sm-10">
             <input
               type="text"
-              className="form-control"
               onChange={(e) => setImgUrl3(e.target.value)}
               value={img_url3}
             />
@@ -212,7 +201,6 @@ const Form = (props) => {
           <div className="col-sm-10">
             <input
               type="text"
-              className="form-control"
               onChange={(e) => setImgUrl4(e.target.value)}
               value={img_url4}
             />
@@ -225,7 +213,6 @@ const Form = (props) => {
           <div className="col-sm-10">
             <input
               type="text"
-              className="form-control"
               onChange={(e) => setSize(e.target.value)}
               value={size}
             />
@@ -238,7 +225,6 @@ const Form = (props) => {
           <div className="col-sm-10">
             <input
               type="text"
-              className="form-control"
               onChange={(e) => setSize2(e.target.value)}
               value={size2}
             />
@@ -251,7 +237,6 @@ const Form = (props) => {
           <div className="col-sm-10">
             <input
               type="text"
-              className="form-control"
               onChange={(e) => setFit(e.target.value)}
               value={fit}
             />
@@ -264,7 +249,6 @@ const Form = (props) => {
           <div className="col-sm-10">
             <input
               type="text"
-              className="form-control"
               onChange={(e) => setFit2(e.target.value)}
               value={fit2}
             />
@@ -277,7 +261,6 @@ const Form = (props) => {
           <div className="col-sm-10">
             <input
               type="text"
-              className="form-control"
               onChange={(e) => setCategory(e.target.value)}
               value={category}
             />
