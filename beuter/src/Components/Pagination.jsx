@@ -47,9 +47,7 @@ const Pagination = ({ itemsPerPage, totalItems, paginate }) => {
       <PageNumbers>
         {pageNumbers.map((number) => (
           <Page key={number}>
-            <Numb onClick={() => paginate(number)} href="#!">
-              {number}
-            </Numb>
+            <Numb onClick={() => paginate(number)}>{number}</Numb>
           </Page>
         ))}
       </PageNumbers>

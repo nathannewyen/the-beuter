@@ -4,6 +4,7 @@ const theme = {
   },
 
   fontSizes: {
+    xxs: "9px",
     xs: "10px",
     sm: "11px",
     s: "12px",

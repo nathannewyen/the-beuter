@@ -9,7 +9,7 @@ const Wrapper = styled.div``;
 const ShopAllProducts = (props) => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(6);
+  const [itemsPerPage] = useState(9);
 
   const [products, setProducts] = useState([]);
 

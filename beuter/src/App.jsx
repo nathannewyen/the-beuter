@@ -19,16 +19,19 @@ import Footer from "./Components/Footer";
 import Form from "./Components/Form";
 
 import GlobalStyle from "./Styles/GlobalStyle";
-
 import { Router, Link, navigate } from "@reach/router";
 import { connect } from "react-redux";
 import { getNumbers } from "./actions/getAction";
+
 import styled from "styled-components";
 import theme from "./Styles/theme";
+import media from "./Styles/media";
+import mediaMin from "./Styles/mediaMin";
 const { fontSizes } = theme;
 
-const NavBar = styled.div`
+const NavBar = styled.nav`
   padding: 30px 70px;
+  ${media.tablet`visibility: hidden;`};
 `;
 
 const Container = styled.div`
@@ -51,7 +54,7 @@ const SearchProduct = styled.span`
   cursor: pointer;
 `;
 
-const SearchIcon = styled.span`
+const Icon = styled.span`
   font-size: ${fontSizes.sm};
   font-weight: 500;
 `;
@@ -99,6 +102,65 @@ const RouterStyle = styled.div`
   margin-left: 350px;
 `;
 
+// Hamburger NavBar
+
+const HamburgerNav = styled.nav`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  padding: 1.7rem 5.5rem 1.7rem;
+  height: 53px;
+  width: 100%;
+  ${mediaMin.tablet`visibility: hidden;`}
+  ${media.tablet`visibility: visible;`};
+`;
+
+const HamburgerNavContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  color: #231f20;
+  font-weight: 500;
+  font-size: 1rem;
+  text-transform: uppercase;
+  line-height: 1;
+  align-items: center;
+`;
+
+const HamburgerUtilities = styled.div`
+  display: flex;
+`;
+
+const HamburgerUlityItem = styled.li`
+  vertical-align: middle;
+`;
+
+const HamburgerLine = styled.div`
+  position: relative;
+  cursor: pointer;
+  margin: -10px 0 0 15px;
+  width: 100%;
+  height: 0.3px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: -6px;
+    width: 100%;
+    height: 0.3px;
+    background-color: inherit;
+  }
+  &:after {
+    top: 6px;
+  }
+`;
+
 function App(props) {
   useEffect(() => {
     getNumbers();
@@ -128,6 +190,8 @@ function App(props) {
     setOpacity(1);
   };
 
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const Wrapper = styled.div`
     opacity: ${opacity};
   `;
@@ -135,8 +199,11 @@ function App(props) {
   const LogoNav = styled.img`
     src: url(${(props) => props.src});
     width: 180px;
-    position: fixed;
     opacity: ${opacity};
+
+    ${media.tablet`
+    width: 140px;
+    `};
   `;
 
   const Utilities = styled.ul`
@@ -149,6 +216,26 @@ function App(props) {
   return (
     <div>
       <GlobalStyle />
+      {/* Hamburger Navbar */}
+      <HamburgerNav>
+        <HamburgerNavContainer>
+          <LogoNav src="https://thebeuter.com/wp-content/uploads/2020/04/logo-black.png" />
+          <HamburgerUtilities>
+            <HamburgerUlityItem>
+              <Icon className="fal fa-search fa-rotate-90" />
+            </HamburgerUlityItem>
+            <HamburgerUlityItem>
+              <Icon className="fal fa-shopping-bag" />
+            </HamburgerUlityItem>
+            <HamburgerUlityItem>
+              <HamburgerLine onClick={() => setMenuOpen(!menuOpen)} />
+            </HamburgerUlityItem>
+          </HamburgerUtilities>
+        </HamburgerNavContainer>
+      </HamburgerNav>
+      {/* End Hamburger Navbar */}
+
+      {/* Top Navbar */}
       <NavBar>
         <Link to="/">
           <LogoNav src="https://thebeuter.com/wp-content/uploads/2020/04/logo-black.png" />
@@ -157,7 +244,7 @@ function App(props) {
           <UlityItem>
             <SearchProduct type="submit" onClick={openModalHandler}>
               SEARCH A PRODUCT
-              <SearchIcon className="fal fa-search fa-rotate-90" />
+              <Icon className="fal fa-search fa-rotate-90" />
             </SearchProduct>
           </UlityItem>
           <UlityItem>
@@ -181,9 +268,11 @@ function App(props) {
           </FormSearch>
         </SearchBox>
       </NavBar>
+      {/* End Top Navbar */}
+
       <Wrapper>
         <Container>
-          <SideNav />
+          <SideNav menuOpen={menuOpen} />
           <RouterStyle>
             <Router>
               <ContactForm path="/contact" />

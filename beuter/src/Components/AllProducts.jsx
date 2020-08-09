@@ -1,19 +1,28 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from '@reach/router';
-import media from '../Styles/media';
-import theme from '../Styles/theme';
+import React from "react";
+import styled from "styled-components";
+import { Link } from "@reach/router";
+import media from "../Styles/media";
+import theme from "../Styles/theme";
 const { fontSizes } = theme;
 
 // Styling
-const ShopWrapper = styled.div`margin: 50px 0;`;
+const ShopWrapper = styled.div`
+  margin: 50px 0;
+`;
 
-const ListItems = styled.ul`margin-left: 200px;`;
+const ListItems = styled.ul`
+  margin-left: 200px;
+  text-align: center;
+  ${media.tablet`
+  margin-left: 0px;
+  text-align: left;
+  `};
+`;
 
 const Item = styled.li`
-	list-type: none;
-	text-align: center;
-	display: inline-block;
+  list-type: none;
+  text-align: center;
+  display: inline-block;
 `;
 
 const ItemLink = styled(Link)`
@@ -23,44 +32,56 @@ const ItemLink = styled(Link)`
 
 const ItemImage = styled.img`
   src: url(${(props) => props.src});
-  width: 450px;
+  width: 600px;
+  ${media.desktop`width: 450px`};
+  ${media.laptop`width: 250px`};
+  ${media.tablet`width: 300px;`};
 `;
 
 const ItemTitle = styled.p`
   font-size: ${fontSizes.sm};
-  margin-top: 10px;
-	font-weight: 500;
+  margin: 10px 20px;
+  font-weight: 500;
+  ${media.laptop`
+  width: 230px;
+  font-size: ${fontSizes.xxs};
+  `};
+
+  ${media.tablet`
+  font-size: ${fontSizes.s};
+  width: 300px;
+  `};
 `;
 
 const ItemPrice = styled.p`
-	font-size: 11px;
-	font-weight: 500;
+  font-size: 11px;
+  font-weight: 500;
 `;
 
 const AllProducts = ({ products, loading }) => {
-	const nf = new Intl.NumberFormat();
+  const nf = new Intl.NumberFormat();
 
-	if (loading) {
-		return <h2>Loading...</h2>;
-	}
+  if (loading) {
+    return <ShopWrapper>Loading...</ShopWrapper>;
+  }
 
-	return (
-		<ShopWrapper>
-			<ListItems>
-				{products.map((product, i) => (
-					<Item key={i}>
-						<ItemLink to={`/product/${product.title_url}`}>
-							<ItemImage src={product.img_url1} />
-							<ItemTitle> {product.title} </ItemTitle>
-							<ItemPrice>
-								{nf.format(product.price)}
-								vnd
-							</ItemPrice>
-						</ItemLink>
-					</Item>
-				))}
-			</ListItems>
-		</ShopWrapper>
-	);
+  return (
+    <ShopWrapper>
+      <ListItems>
+        {products.map((product, i) => (
+          <Item key={i}>
+            <ItemLink to={`/product/${product.title_url}`}>
+              <ItemImage src={product.img_url1} />
+              <ItemTitle> {product.title} </ItemTitle>
+              <ItemPrice>
+                {nf.format(product.price)}
+                vnd
+              </ItemPrice>
+            </ItemLink>
+          </Item>
+        ))}
+      </ListItems>
+    </ShopWrapper>
+  );
 };
 export default AllProducts;
