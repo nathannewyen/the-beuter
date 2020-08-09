@@ -8,6 +8,9 @@ const { fontSizes } = theme;
 // Styling
 const ShopWrapper = styled.div`
   margin: 50px 0;
+  ${media.tablet`
+  margin: 10px 0;
+  `};
 `;
 
 const ListItems = styled.ul`
@@ -20,6 +23,7 @@ const ListItems = styled.ul`
 `;
 
 const Item = styled.li`
+  margin: 10px 0;
   list-type: none;
   text-align: center;
   display: inline-block;

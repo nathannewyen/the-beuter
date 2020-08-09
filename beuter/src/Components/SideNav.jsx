@@ -53,9 +53,7 @@ const Item = styled(Link)`
   display: block;
 `;
 
-const HamburgerSize = styled.nav`
-  color: red;
-`;
+const HamburgerSize = styled.nav``;
 
 const SideNav = (props) => {
   return (

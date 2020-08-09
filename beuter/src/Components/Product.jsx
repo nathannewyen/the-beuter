@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "@reach/router";
 import axios from "axios";
 import theme from "../Styles/theme";
-
+import media from "../Styles/media";
 import { connect } from "react-redux";
 import { addBasket } from "../actions/addAction";
 
@@ -12,11 +12,14 @@ const { fontSizes } = theme;
 const ProductWrapper = styled.div`
   width: 100%;
   text-align: center;
+  ${media.tablet`
+  text-align: left;
+  `}
 `;
 
 const ProductContainer = styled.div`
   display: inline-block;
-`;  
+`;
 
 const ProductImage = styled.div`
   width: 100%;
@@ -25,7 +28,15 @@ const ProductImage = styled.div`
 
 const Image = styled.img`
   src: url(${(props) => props.src});
+  width: 900px;
+
+  ${media.desktop`
   width: 550px;
+  `}
+
+  ${media.tablet`
+  width: 400px;
+  `}
 `;
 
 const SideNav = styled.div`
@@ -57,6 +68,9 @@ const Info = styled.li`
 const ItemPrice = styled.p`
   font-size: ${fontSizes.md};
   font-weight: 500;
+  ${media.tablet`
+  margin-top: 10px; 
+  `}
 `;
 
 const SelectSizesForm = styled.form`
@@ -105,9 +119,11 @@ const BuyButton = styled.button`
   font-weight: 500;
   letter-spacing: 2px;
   color: white;
-  padding: 8px 0;
-  margin: 30px 0 50px;
+  margin: 10px auto;
+  padding: 10px 0 5px;
   border: 0;
+  display: inline-block;
+  text-align: center;
   width: 100%;
   cursor: pointer;
 `;

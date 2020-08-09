@@ -57,6 +57,12 @@ const SearchProduct = styled.span`
 const Icon = styled.span`
   font-size: ${fontSizes.sm};
   font-weight: 500;
+  ${media.tablet`font-size: ${fontSizes.md}`};
+`;
+
+const CartNumb = styled.span`
+  font-size: ${fontSizes.xs};
+  vertical-align: top;
 `;
 
 const ShoppingBag = styled(Link)`
@@ -219,13 +225,21 @@ function App(props) {
       {/* Hamburger Navbar */}
       <HamburgerNav>
         <HamburgerNavContainer>
-          <LogoNav src="https://thebeuter.com/wp-content/uploads/2020/04/logo-black.png" />
+          <Link to="/">
+            <LogoNav src="https://thebeuter.com/wp-content/uploads/2020/04/logo-black.png" />
+          </Link>
           <HamburgerUtilities>
             <HamburgerUlityItem>
               <Icon className="fal fa-search fa-rotate-90" />
             </HamburgerUlityItem>
             <HamburgerUlityItem>
-              <Icon className="fal fa-shopping-bag" />
+              <Link
+                to="/cart"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                <Icon className="fal fa-shopping-bag" />
+                <CartNumb>({props.basketProps.basketNumbers})</CartNumb>
+              </Link>
             </HamburgerUlityItem>
             <HamburgerUlityItem>
               <HamburgerLine onClick={() => setMenuOpen(!menuOpen)} />

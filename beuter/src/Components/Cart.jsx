@@ -3,21 +3,29 @@ import { connect } from "react-redux";
 import { Link } from "@reach/router";
 import styled from "styled-components";
 import theme from "../Styles/theme";
+import media from "../Styles/media";
 import { deleteItem } from "../actions/removeItem";
 
 const { fontSizes } = theme;
 
 const Wrapper = styled.div`
   margin: 50px 0;
+  ${media.tablet`
+  margin: 10px 0;
+  `}
 `;
 
 const Container = styled.div`
   width: 350px;
   margin: 0 auto;
+  ${media.tablet`
+  margin: 10px 80px;
+  `}
 `;
 
 const Info = styled.p`
   font-size: ${fontSizes.xs};
+  margin-top: 1rem;
 `;
 
 const LinkShop = styled(Link)`
@@ -42,6 +50,9 @@ const CheckOutButton = styled.button`
   cursor: pointer;
   font-weight: bold;
   color: white;
+  ${media.tablet`
+  padding: 10px 0 5px;
+  `}
 `;
 
 const LinkStyle = styled(Link)`
