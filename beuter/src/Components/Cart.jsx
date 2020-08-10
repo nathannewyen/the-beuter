@@ -149,7 +149,9 @@ const Cart = ({ basketProps, deleteItem }) => {
     <Wrapper>
       {productsInCart.length >= 1 ? (
         <Container>
-          <Info>There are 1 items in your Shopping Bag.</Info>
+          <Info>
+            There are {productsInCart.length} items in your Shopping Bag.
+          </Info>
           <Info>
             <LinkShop to="/">Shop more</LinkShop> or{" "}
             <LinkShop to="/checkout">Check out now</LinkShop>

@@ -169,6 +169,11 @@ const HamburgerLine = styled.div`
   }
 `;
 
+const HamburgerSearch = styled.div`
+  ${mediaMin.tablet`visibility: hidden;`}
+  ${media.tablet`visibility: visible;`};
+`;
+
 const App = (props) => {
   useEffect(() => {
     getNumbers();
@@ -233,7 +238,10 @@ const App = (props) => {
           </Link>
           <HamburgerUtilities>
             <HamburgerUlityItem>
-              <Icon className="fal fa-search fa-rotate-90" />
+              <Icon
+                className="fal fa-search fa-rotate-90"
+                onClick={openModalHandler}
+              />
             </HamburgerUlityItem>
             <HamburgerUlityItem>
               <Link
@@ -251,7 +259,21 @@ const App = (props) => {
         </HamburgerNavContainer>
       </HamburgerNav>
       {/* End Hamburger Navbar */}
-
+      <HamburgerSearch>
+        {isShowing ? <SearchBoxModal onClick={closeModalHandler} /> : null}
+        <SearchBox show={isShowing} close={closeModalHandler}>
+          <SearchTitle>What are you looking for?</SearchTitle>
+          <FormSearch onSubmit={onSubmit}>
+            <SearchInput
+              type="text"
+              placeholder="Type something to search"
+              onChange={(e) => setSearchTerm(e.target.value)}
+              defaultValue={searchTerm}
+            />
+            <SearchButton type="submit" value="Search" />
+          </FormSearch>
+        </SearchBox>
+      </HamburgerSearch>
       {/* Top Navbar */}
       <NavBar>
         <Link to="/">

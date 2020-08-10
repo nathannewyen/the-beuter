@@ -9,12 +9,19 @@ const Wrapper = styled.div`
   margin: 50px 0;
   width: 100%;
   text-align: center;
+  ${media.tablet`
+  text-align: left;
+  `}
 `;
 
 const Container = styled.div`
   width: 400px;
-  margin-right: 50px;
+  margin-right: 40px;
+  padding: 0 30px;
   display: inline-block;
+  ${media.tablet`
+  width: 350px;
+  `}
 `;
 
 const SideNav = styled.div`
@@ -24,6 +31,9 @@ const SideNav = styled.div`
   width: 350px;
   text-align: left;
   margin: 50px 0px 0px 50px;
+  ${media.tablet`
+  width: 300px;
+  `}
 `;
 
 const ContactInfo = styled.p`
@@ -95,6 +105,9 @@ const ProductTitle = styled.p`
   padding-left: 20px;
   width: 280px;
   font-weight: 500;
+  ${media.tablet`
+  width: 250px;
+  `}
 `;
 
 const ProductQuantity = styled.span`
@@ -147,6 +160,26 @@ const PriceInfo = styled.span`
   float: right;
 `;
 
+const PaymentDiv = styled.p`
+  margin-top: 2rem;
+  font-size: ${fontSizes.md};
+  text-align: left;
+`;
+
+const PaymentMethod = styled.input`
+  width: 10px;
+  height: 10px;
+`;
+const PaymentTitle = styled.label`
+  font-size: ${fontSizes.sm};
+  font-weight: 500;
+`;
+
+const PaymentDetails = styled.p`
+  font-size: ${fontSizes.sm};
+  text-align: justify;
+`;
+
 const Checkout = ({ basketProps }) => {
   const nf = new Intl.NumberFormat();
   let productsInCart = [];
@@ -182,6 +215,16 @@ const Checkout = ({ basketProps }) => {
             <PlaceOrderButton type="submit"> Place order </PlaceOrderButton>
           </ShippingForm>
         </CheckOutForm>
+        <PaymentDiv>Payment Method</PaymentDiv>
+        <PaymentDiv>
+          <PaymentMethod type="radio" checked />{" "}
+          <PaymentTitle>Direct bank transfer:</PaymentTitle>
+          <PaymentDetails>
+            Make your payment directly into our bank account. Please use your
+            Order ID – phone number as the payment reference. Your order will
+            not be shipped until the funds have cleared in our account.
+          </PaymentDetails>
+        </PaymentDiv>
       </Container>
       <SideNav>
         <CartInfo>Your order</CartInfo>

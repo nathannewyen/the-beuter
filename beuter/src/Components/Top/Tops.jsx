@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import theme from "../../Styles/theme";
 import media from "../../Styles/media";
 import TopProducts from "./TopProducts";
 import Pagination from "../Pagination";
-const { fontSizes } = theme;
 
 const Wrapper = styled.div`
   margin: 50px 0;
