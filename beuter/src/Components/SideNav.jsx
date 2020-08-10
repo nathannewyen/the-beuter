@@ -16,10 +16,13 @@ const Sidenav = styled.nav`
 	z-index: 1;
 	overflow-x: hidden;
 	width: 300px;
+
 	${media.laptop`
   width: 200px;
   padding: 0 10px;
-  `} ${media.tablet`visibility: hidden;`};
+  `};
+
+	${media.tablet`visibility: hidden;`};
 `;
 
 const AllItems = styled.ul`
@@ -35,6 +38,10 @@ const AllItems = styled.ul`
   height: 100vh;
   overflow: auto;
   transition: all .2s ease-in-out;
+  `};
+
+	${media.mobileL`
+  width: 100%;
   `};
 `;
 

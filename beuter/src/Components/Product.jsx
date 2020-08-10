@@ -4,7 +4,6 @@ import { Link } from '@reach/router';
 import axios from 'axios';
 import theme from '../Styles/theme';
 import media from '../Styles/media';
-import mediaMin from '../Styles/mediaMin';
 import { connect } from 'react-redux';
 import { addBasket } from '../actions/addAction';
 
@@ -16,7 +15,10 @@ const ProductWrapper = styled.div`
 	${media.tablet`text-align: left;`};
 `;
 
-const ProductContainer = styled.div`display: inline-block;`;
+const ProductContainer = styled.div`
+	display: inline-block;
+	${media.mobileL`display: block;`};
+`;
 
 const ProductImage = styled.div`
 	width: 100%;
@@ -44,6 +46,10 @@ const SideNav = styled.div`
 	text-align: left;
 	margin: 50px 0px;
 	padding: 10px;
+	${media.mobileL`
+  margin: 0;
+  position: relative;
+  `};
 `;
 
 const ProductTitle = styled.div`
@@ -132,6 +138,7 @@ const ItemInfo = styled(Link)`
   color: black;
   display: inline-block;
   margin: 0px 30px 0 0;
+  ${media.mobileL`margin-bottom: 30px`};
 `;
 
 const Product = (props) => {

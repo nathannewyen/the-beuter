@@ -40,6 +40,7 @@ const ItemImage = styled.img`
 	${media.desktop`width: 450px`};
 	${media.laptop`width: 250px`};
 	${media.tablet`width: 300px;`};
+	${media.mobileL`width: 150px;`};
 `;
 
 const ItemTitle = styled.p`
@@ -54,6 +55,10 @@ const ItemTitle = styled.p`
   font-size: 12px;
   width: 300px;
   `};
+
+	${media.mobileL`
+  width: 120px; 
+  font-size: 9px;`};
 `;
 
 const ItemPrice = styled.p`

@@ -38,6 +38,7 @@ const Container = styled.div`
 	min-height: 90vh;
 	width: 100%;
 	${media.tablet`min-height: 85vh;`};
+	${media.mobileL`min-height: 82vh;`};
 `;
 
 const UlityItem = styled.li`
@@ -82,6 +83,7 @@ const SearchTitle = styled.p`
 	text-align: center;
 	font-weight: 500;
 `;
+
 const SearchInput = styled.input`
 	font-size: ${fontSizes.sm};
 	font-weight: 500;
@@ -107,8 +109,15 @@ const SearchButton = styled.input`
 `;
 
 const RouterStyle = styled.div`
-  display: inline-block,
-  margin-left: 350px;
+	display: inline-block;
+
+	${mediaMin.laptopL`
+  margin-left: 300px;
+  `};
+
+	${media.tablet`
+  margin: 0;
+  `};
 `;
 
 // Hamburger NavBar
@@ -123,6 +132,7 @@ const HamburgerNav = styled.nav`
 	width: 100%;
 	${mediaMin.tablet`visibility: hidden;`};
 	${media.tablet`visibility: visible;`};
+	${media.mobileL`padding: 0 2rem;`};
 `;
 
 const HamburgerNavContainer = styled.div`
@@ -137,14 +147,17 @@ const HamburgerNavContainer = styled.div`
 	align-items: center;
 `;
 
-const HamburgerUtilities = styled.div`display: flex;`;
+const HamburgerUtilities = styled.div`
+	display: flex;
+	margin-top: 14px;
+`;
 
-const HamburgerUlityItem = styled.li`vertical-align: middle;`;
+const HamburgerUlityItem = styled.li``;
 
 const HamburgerLine = styled.div`
 	position: relative;
 	cursor: pointer;
-	margin: -10px 0 0 15px;
+	margin: -10px 0 0 8px;
 	width: 100%;
 	height: 0.3px;
 	background-color: black;
@@ -166,7 +179,10 @@ const HamburgerLine = styled.div`
 	}
 `;
 
-const HamburgerSearch = styled.div`${mediaMin.tablet`visibility: hidden;`} ${media.tablet`visibility: visible;`};`;
+const HamburgerSearch = styled.div`
+	${mediaMin.tablet`visibility: hidden;`};
+	${media.tablet`visibility: visible;`};
+`;
 
 const App = (props) => {
 	useEffect(() => {
@@ -207,10 +223,13 @@ const App = (props) => {
 		opacity: ${opacity};
 		position: fixed;
 
-		${media.tablet`
-    width: 140px;
-    `};
+		${media.tablet`width: 140px;`};
+		${media.mobileL`vertical-align: middle`};
 	`;
+
+	const LogoLinkStyled = styled(Link)`
+  vertical-align: middle;
+  `;
 
 	const Utilities = styled.ul`
 		font-size: 10px;
@@ -225,9 +244,9 @@ const App = (props) => {
 			{/* Hamburger Navbar */}
 			<HamburgerNav>
 				<HamburgerNavContainer>
-					<Link to="/">
+					<LogoLinkStyled to="/">
 						<LogoNav src="https://thebeuter.com/wp-content/uploads/2020/04/logo-black.png" />
-					</Link>
+					</LogoLinkStyled>
 					<HamburgerUtilities>
 						<HamburgerUlityItem>
 							<Icon className="fal fa-search fa-rotate-90" onClick={openModalHandler} />

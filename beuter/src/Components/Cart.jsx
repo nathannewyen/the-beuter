@@ -10,17 +10,17 @@ const { fontSizes } = theme;
 
 const Wrapper = styled.div`
 	margin: 50px 0;
-	${media.tablet`
-  margin: 10px 0;
-  `};
+	${media.tablet`margin: 10px 0;`};
+	${media.laptop`
+	margin-left: 240px;
+	`};
 `;
 
 const Container = styled.div`
 	width: 350px;
 	margin: 0 auto;
-	${media.tablet`
-  margin: 10px 80px;
-  `};
+	${media.tablet`margin: 10px 80px;`};
+	${media.mobileL`margin: 1rem; `};
 `;
 
 const Info = styled.p`
@@ -187,8 +187,7 @@ const Cart = ({ basketProps, deleteItem }) => {
 					</Info>
 					<Info>
 						Total
-						<PriceInfo>
-							{' '}
+						<PriceInfo style={{ fontWeight: '500' }}>
 							{nf.format(basketProps.cartCost + additionalShippingFee + shippingFee)} vnd
 						</PriceInfo>
 					</Info>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import theme from '../Styles/theme';
@@ -12,6 +12,9 @@ const Wrapper = styled.div`
 	${media.tablet`
   text-align: left;
   `};
+	${media.laptop`
+  margin-left: 180px;
+  `};
 `;
 
 const Container = styled.div`
@@ -21,6 +24,7 @@ const Container = styled.div`
 	display: inline-block;
 	${media.laptop`margin: 0px`};
 	${media.tablet`width: 350px;`};
+	${media.mobileL`width: 100%;`};
 `;
 
 const SideNav = styled.div`
@@ -30,11 +34,17 @@ const SideNav = styled.div`
 	width: 350px;
 	text-align: left;
 	margin: 50px 0px 0px 50px;
+
 	${media.laptop`
   width: 250px;
   margin-left: 15px;
   `};
+
 	${media.tablet`width: 300px;`};
+
+	${media.mobileL`
+  visibility: hidden;
+  `};
 `;
 
 const ContactInfo = styled.p`
@@ -187,6 +197,10 @@ const Checkout = ({ basketProps }) => {
 	}
 
 	let shippingFee = 25000;
+
+	useEffect(() => {
+		document.title = `Checkout - The Beuter`;
+	});
 	return (
 		<Wrapper>
 			<Container>

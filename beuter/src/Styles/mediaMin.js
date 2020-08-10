@@ -8,7 +8,7 @@ const sizes = {
   mobileL: '425',
   tablet: '801',
   laptop: '1024',
-  laptopL: '1440',
+  laptopL: '1025',
   desktop: '2000',
   giantDesktop: '2800'
 }

@@ -37,9 +37,10 @@ const ItemLink = styled(Link)`
 const ItemImage = styled.img`
 	src: url(${(props) => props.src});
 	width: 600px;
-	${media.desktop`width: 450px`};
+	${media.desktop`width: 380px`};
 	${media.laptop`width: 230px`};
 	${media.tablet`width: 300px;`};
+	${media.mobileL`width: 150px;`};
 `;
 
 const ItemTitle = styled.p`
@@ -54,6 +55,10 @@ const ItemTitle = styled.p`
   font-size: 12px;
   width: 300px;
   `};
+
+	${media.mobileL`
+  width: 120px; 
+  font-size: 9px;`};
 `;
 
 const ItemPrice = styled.p`
