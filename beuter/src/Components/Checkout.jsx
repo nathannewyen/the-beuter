@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import theme from '../Styles/theme';
 import media from '../Styles/media';
+import mediaMin from '../Styles/mediaMin';
 const { fontSizes } = theme;
 
 const Wrapper = styled.div`
@@ -12,18 +13,17 @@ const Wrapper = styled.div`
 	${media.tablet`
   text-align: left;
   `};
-	${media.laptop`
-  margin-left: 180px;
+	${mediaMin.laptop`
+  margin-left: 200px;
   `};
 `;
 
 const Container = styled.div`
-	width: 400px;
+	width: 500px;
 	margin-right: 40px;
 	padding: 0 30px;
 	display: inline-block;
-	${media.laptop`margin: 0px`};
-	${media.tablet`width: 350px;`};
+	${media.laptop`margin: 0px; width: 400px;`};
 	${media.mobileL`width: 100%;`};
 `;
 

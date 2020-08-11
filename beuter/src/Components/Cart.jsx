@@ -4,16 +4,16 @@ import { Link } from '@reach/router';
 import styled from 'styled-components';
 import theme from '../Styles/theme';
 import media from '../Styles/media';
+import mediaMin from '../Styles/mediaMin';
 import { deleteItem } from '../actions/removeItem';
 
 const { fontSizes } = theme;
 
 const Wrapper = styled.div`
 	margin: 50px 0;
+	${mediaMin.laptopL`margin-left: 35em;`};
+	${media.laptop`margin-left: 240px;`};
 	${media.tablet`margin: 10px 0;`};
-	${media.laptop`
-	margin-left: 240px;
-	`};
 `;
 
 const Container = styled.div`

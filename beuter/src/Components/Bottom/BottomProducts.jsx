@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from '@reach/router';
 import theme from '../../Styles/theme';
 import media from '../../Styles/media';
+import mediaMin from '../../Styles/mediaMin';
 const { fontSizes } = theme;
 
 // Styling
@@ -16,6 +17,9 @@ const ShopWrapper = styled.div`
 const ListItems = styled.ul`
 	margin-left: 200px;
 	text-align: center;
+	${mediaMin.laptop`
+	margin-left: 140px; 
+	text-align: left;`};
 	${media.tablet`
   margin-left: 0px;
   text-align: left;

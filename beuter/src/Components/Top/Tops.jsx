@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  useEffect,
+  useState
+} from "react";
 import axios from "axios";
 import styled from "styled-components";
 import media from "../../Styles/media";
 import TopProducts from "./TopProducts";
 import Pagination from "../Pagination";
 
-const Wrapper = styled.div`
+const Wrapper = styled.div `
   margin: 50px 0;
   ${media.tablet`
   margin: 10px 0;
@@ -35,15 +38,27 @@ const Tops = (props) => {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  return (
-    <Wrapper>
-      <TopProducts products={currentItems} loading={loading} />
-      <Pagination
-        itemsPerPage={itemsPerPage}
-        totalItems={products.length}
-        paginate={paginate}
-      />
-    </Wrapper>
+  return ( <
+    Wrapper >
+    <
+    TopProducts products = {
+      currentItems
+    }
+    loading = {
+      loading
+    }
+    /> <
+    Pagination itemsPerPage = {
+      itemsPerPage
+    }
+    totalItems = {
+      products.length
+    }
+    paginate = {
+      paginate
+    }
+    /> < /
+    Wrapper >
   );
 };
 

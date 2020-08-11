@@ -4,6 +4,7 @@ import { Link } from '@reach/router';
 import axios from 'axios';
 import theme from '../Styles/theme';
 import media from '../Styles/media';
+import mediaMin from '../Styles/mediaMin';
 import { connect } from 'react-redux';
 import { addBasket } from '../actions/addAction';
 
@@ -12,6 +13,8 @@ const { fontSizes } = theme;
 const ProductWrapper = styled.div`
 	width: 100%;
 	text-align: center;
+	${mediaMin.desktop`margin-left: 300px;`};
+	${mediaMin.laptop`margin-left: 180px;`};
 	${media.tablet`text-align: left;`};
 `;
 

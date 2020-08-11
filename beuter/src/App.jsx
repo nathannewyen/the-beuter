@@ -15,6 +15,7 @@ import Tops from './Components/Top/Tops';
 import Bottoms from './Components/Bottom/Bottoms';
 import Checkout from './Components/Checkout';
 import Footer from './Components/Footer';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 // import Form from "./Components/Form";
 
@@ -27,7 +28,7 @@ import styled from 'styled-components';
 import theme from './Styles/theme';
 import media from './Styles/media';
 import mediaMin from './Styles/mediaMin';
-const { fontSizes } = theme;
+const { fontSizes, loaderDelay } = theme;
 
 const NavBar = styled.nav`
 	padding: 30px 70px;
@@ -108,17 +109,7 @@ const SearchButton = styled.input`
 	letter-spacing: 0.5px;
 `;
 
-const RouterStyle = styled.div`
-	display: inline-block;
-
-	${mediaMin.laptopL`
-  margin-left: 300px;
-  `};
-
-	${media.tablet`
-  margin: 0;
-  `};
-`;
+const RouterStyle = styled.div`display: inline-block;`;
 
 // Hamburger NavBar
 
@@ -145,6 +136,7 @@ const HamburgerNavContainer = styled.div`
 	text-transform: uppercase;
 	line-height: 1;
 	align-items: center;
+	transition: all 0.9s ease;
 `;
 
 const HamburgerUtilities = styled.div`
@@ -164,6 +156,8 @@ const HamburgerLine = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	transition-duration: 0.22s;
+	transition-property: transform;
 	&:before,
 	&:after {
 		content: "";
@@ -177,6 +171,30 @@ const HamburgerLine = styled.div`
 	&:after {
 		top: 6px;
 	}
+	transition-timing-function: cubic-bezier(
+		${(props) => (props.menuOpen ? `0.215, 0.61, 0.355, 1` : `0.55, 0.055, 0.675, 0.19`)}
+	);
+`;
+
+const InputNavbar = styled.input`
+	z-index: 2;
+	position: absolute;
+	margin-left: -10px;
+	cursor: pointer;
+	width: 20px;
+	height: 20px;
+	opacity: 0;
+	&:checked + ${HamburgerLine} {
+		transform: rotate(135deg);
+	}
+	&:checked + ${HamburgerLine}:before {
+		top: 0;
+		transform: rotate(90deg);
+	}
+	&:checked + ${HamburgerLine}:after {
+		top: 0;
+		transform: rotate(90deg);
+	}
 `;
 
 const HamburgerSearch = styled.div`
@@ -185,9 +203,14 @@ const HamburgerSearch = styled.div`
 `;
 
 const App = (props) => {
+	const [ menuOpen, setMenuOpen ] = useState(false);
+
 	useEffect(() => {
 		getNumbers();
+		setMenuOpen(false);
 	}, []);
+
+	const timeout = menuOpen ? loaderDelay : 0;
 
 	const [ isShowing, setIsShowing ] = useState(false);
 	const [ opacity, setOpacity ] = useState(1);
@@ -213,7 +236,8 @@ const App = (props) => {
 		setOpacity(1);
 	};
 
-	const [ menuOpen, setMenuOpen ] = useState(false);
+
+	const fadeClass = menuOpen ? 'fade' : '';
 
 	const Wrapper = styled.div`opacity: ${opacity};`;
 
@@ -242,6 +266,8 @@ const App = (props) => {
 		<div>
 			<GlobalStyle />
 			{/* Hamburger Navbar */}
+			<TransitionGroup component={null}>
+				<CSSTransition className="slide" timeout={{ enter: 1000}}>
 			<HamburgerNav>
 				<HamburgerNavContainer>
 					<LogoLinkStyled to="/">
@@ -258,11 +284,14 @@ const App = (props) => {
 							</Link>
 						</HamburgerUlityItem>
 						<HamburgerUlityItem>
-							<HamburgerLine onClick={() => setMenuOpen(!menuOpen)} />
+							<InputNavbar type="checkbox" onClick={() => setMenuOpen(!menuOpen)} />
+							<HamburgerLine />
 						</HamburgerUlityItem>
 					</HamburgerUtilities>
 				</HamburgerNavContainer>
-			</HamburgerNav>
+					</HamburgerNav>
+					</CSSTransition>
+				</TransitionGroup>
 			{/* End Hamburger Navbar */}
 			<HamburgerSearch>
 				{isShowing ? <SearchBoxModal onClick={closeModalHandler} /> : null}
