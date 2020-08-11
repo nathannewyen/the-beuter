@@ -1,6 +1,8 @@
 const product = require("../controllers/product.controller");
+var path = require("path");
 
 module.exports = (app) => {
+
     app.get("/api/products", product.index);
 
     // Create a product
@@ -14,4 +16,8 @@ module.exports = (app) => {
 
     //Edit a product
     app.put("/api/products/:id", product.update)
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'beuter', 'build', 'index.html'));
+    })
 };
