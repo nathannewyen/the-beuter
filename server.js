@@ -17,5 +17,7 @@ if (process.env.NODE_ENV === "production") {
     })
 }
 
+console.log(port)
+
 require("./server/config/database.config")(db);
 require("./server/routes/product.route")(app);
