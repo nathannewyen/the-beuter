@@ -378,6 +378,7 @@ const App = (props) => {
               />
               <Cart path="/cart" />
               <Checkout path="/checkout" />
+              <Form path="/add/form" />
             </Router>
           </RouterStyle>
         </Container>
