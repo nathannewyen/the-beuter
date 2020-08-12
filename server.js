@@ -7,10 +7,6 @@ const express = require("express"),
     server = app.listen(port, () => console.log(`Listening to on port ${port}`));
 
 app.use(cors());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-app.use(bodyParser.json());
 app.use(express.json());
 
 if (process.env.NODE_ENV === "production") {
