@@ -15,7 +15,7 @@ const ShopAllProducts = (props) => {
 
   const getProductsAPI = () => {
     axios
-      .get("http://localhost:8000/api/products")
+      .get("/api/products")
       .then((res) => {
         setProducts(res.data);
         getProductsAPI();
