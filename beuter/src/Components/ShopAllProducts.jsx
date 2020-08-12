@@ -16,9 +16,7 @@ const ShopAllProducts = (props) => {
   useEffect(() => {
     const fetchItems = async () => {
       setLoading(true);
-      const res = await axios.get(
-        "https://thebeuter.herokuapp.com/api/products"
-      );
+      const res = await axios.get("/api/products");
       setProducts(res.data);
       setLoading(false);
     };
