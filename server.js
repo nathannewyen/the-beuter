@@ -16,8 +16,5 @@ if (process.env.NODE_ENV === "production") {
         res.sendFile(path.resolve(__dirname, 'beuter', 'build', 'index.html'));
     })
 }
-
-console.log(port)
-
 require("./server/config/database.config")(db);
 require("./server/routes/product.route")(app);

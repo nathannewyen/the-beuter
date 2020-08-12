@@ -58,7 +58,7 @@ const Form = (props) => {
       category,
     };
     axios
-      .post("localhost:8000/api/products", product)
+      .post("thebeuter.herokuapp.com/api/products", product)
       .then((res) => {
         if (res.data.errors) {
           setErrors(res.data.errors);
