@@ -13,23 +13,15 @@ const ShopAllProducts = (props) => {
 
   const [products, setProducts] = useState([]);
 
-  const getProductsAPI = () => {
-    axios
-      .get("/api/products")
-      .then((res) => {
-        setProducts(res.data);
-        getProductsAPI();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   useEffect(() => {
-    setLoading(true);
-    getProductsAPI();
+    const fetchItems = async () => {
+      setLoading(true);
+      const res = await axios.get("/api/products");
+      setProducts(res.data);
+      setLoading(false);
+    };
     document.title = `Shop - The Beuter`;
-    setLoading(false);
+    fetchItems();
   }, [props]);
 
   const indexOfLastItem = currentPage * itemsPerPage;

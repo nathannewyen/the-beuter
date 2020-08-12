@@ -6,6 +6,6 @@ module.exports = (name) => {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })
-        .then(() => console.log(`Succesfully connected to ${name}`))
+        .then(() => console.log(`Successfully connected to ${name}`))
         .catch((err) => console.log(err));
 };
