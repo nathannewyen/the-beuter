@@ -26,5 +26,6 @@
     "url": "https://github.com/nathannewyen/the-beuter/issues"
   },
   "homepage": "https://github.com/nathannewyen/the-beuter#readme",
-  "description": ""
+  "description": "",
+  "proxy": "http://localhost:8000"
 }
