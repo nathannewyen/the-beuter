@@ -63,7 +63,7 @@ const ItemPrice = styled.p`
 	font-weight: 500;
 `;
 
-const BottomProducts = ({ products, loading }) => {
+const BagProducts = ({ products, loading }) => {
 	const nf = new Intl.NumberFormat();
 
 	if (loading) {
@@ -75,7 +75,7 @@ const BottomProducts = ({ products, loading }) => {
 			<ListItems>
 				{products.map((product, i) => (
 					<Item key={i}>
-						{product.category === 'bottom' ? (
+						{product.category === 'bag' ? (
 							<ItemLink to={`/product/${product.title_url}`}>
 								<ItemImage src={product.img_url1} /> <ItemTitle> {product.title} </ItemTitle>
 								<ItemPrice>{nf.format(product.price)} vnd</ItemPrice>
@@ -87,4 +87,4 @@ const BottomProducts = ({ products, loading }) => {
 		</ShopWrapper>
 	);
 };
-export default BottomProducts;
+export default BagProducts;

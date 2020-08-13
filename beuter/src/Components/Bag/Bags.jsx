@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import media from '../../Styles/media';
-import BottomProducts from './BottomProducts';
+import BagProducts from './BagProducts';
 import Pagination from '../Pagination';
 
 const Wrapper = styled.div`
@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   `};
 `;
 
-const Bottoms = (props) => {
+const Bags = (props) => {
 	const [ loading, setLoading ] = useState(false);
 	const [ currentPage, setCurrentPage ] = useState(1);
 	const [ itemsPerPage ] = useState(9);
@@ -24,6 +24,7 @@ const Bottoms = (props) => {
 				setLoading(true);
 				const res = await axios.get('/api/products');
 				setProducts(res.data);
+				console.log(res.data);
 				setLoading(false);
 			};
 			document.title = `Shop - The Beuter`;
@@ -40,10 +41,10 @@ const Bottoms = (props) => {
 
 	return (
 		<Wrapper>
-			<BottomProducts products={currentItems} loading={loading} />
-			<Pagination itemsPerPage={itemsPerPage} totalItems={products.length} paginate={paginate} />
+			<BagProducts products={currentItems} loading={loading} />{' '}
+			<Pagination itemsPerPage={itemsPerPage} totalItems={products.length} paginate={paginate} />{' '}
 		</Wrapper>
 	);
 };
 
-export default Bottoms;
+export default Bags;

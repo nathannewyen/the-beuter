@@ -2,24 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from '@reach/router';
 import media from '../Styles/media';
+import mediaMin from '../Styles/media';
 import theme from '../Styles/theme';
 const { fontSizes } = theme;
 
 // Styling
 const ShopWrapper = styled.div`
 	margin: 50px 0;
-	${media.tablet`
-  margin: 10px 0;
-  `};
+	${media.tablet`margin: 10px 0;`};
 `;
 
 const ListItems = styled.ul`
-	margin-left: 150px;
-	text-align: center;
-	${media.tablet`
-  margin-left: 0px;
-  text-align: left;
-  `};
+	margin-left: 200px;
+	text-align: left;
+	${mediaMin.laptop`margin-left: 140px;`};
+	${media.tablet`margin-left: 0px;`};
 `;
 
 const Item = styled.li`
@@ -37,8 +34,8 @@ const ItemLink = styled(Link)`
 const ItemImage = styled.img`
 	src: url(${(props) => props.src});
 	width: 600px;
-	${media.desktop`width: 380px`};
-	${media.laptop`width: 230px`};
+	${media.desktop`width: 400px`};
+	${media.laptop`width: 250px`};
 	${media.tablet`width: 300px;`};
 	${media.mobileL`width: 150px;`};
 `;
