@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 if (process.env.NODE_ENV === 'production') {
-    app.get(/^\/(?!api).*/, (req, res) => { // don't serve react app to api routes
+    app.get('/', (req, res) => { // don't serve react app to api routes
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
 };
