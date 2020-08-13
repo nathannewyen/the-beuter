@@ -18,7 +18,6 @@ const ShopAllProducts = (props) => {
       setLoading(true);
       const res = await axios.get("/api/products");
       setProducts(res.data);
-      console.log(res.data);
       setLoading(false);
     };
     document.title = `Shop - The Beuter`;
