@@ -10,8 +10,8 @@ app.use(cors());
 app.use(express.json());
 
 if (process.env.NODE_ENV === 'production') {
-    app.get('/', (req, res) => { // don't serve react app to api routes
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname + '/client/build/index.html'));
     });
 };
 require("./server/config/database.config")(db);
