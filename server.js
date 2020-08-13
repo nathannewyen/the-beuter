@@ -1,5 +1,4 @@
 const express = require("express"),
-    bodyParser = require('body-parser'),
     app = express(),
     cors = require("cors"),
     port = process.env.PORT || 8000,
@@ -7,7 +6,6 @@ const express = require("express"),
     path = require("path"),
     server = app.listen(port, () => console.log(`Listening to on port ${port}`));
 
-app.use(bodyParser.json());
 app.use(cors());
 app.use(express.json());
 
