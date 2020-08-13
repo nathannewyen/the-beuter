@@ -9,13 +9,12 @@ const express = require("express"),
 app.use(cors());
 app.use(express.json());
 
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, 'beuter/build')));
+app.use(express.static(path.join(__dirname, 'beuter/build')));
 
 
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname + '/beuter/build/index.html'));
-    });
-}
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/beuter/build/index.html'));
+});
+
 require("./server/config/database.config")(db);
 require("./server/routes/product.route")(app);
