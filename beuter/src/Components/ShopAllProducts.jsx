@@ -22,7 +22,7 @@ const ShopAllProducts = (props) => {
     };
     document.title = `Shop - The Beuter`;
     fetchItems();
-  }, [products, setProducts]);
+  }, [props.products]);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
