@@ -6,7 +6,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "build": "cd beuter && npm run build",
-    "install-beuter": "cd beuter && npm install",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix beuter && npm run build --prefix beuter",
     "dev": "concurrently \"npm run server\" \"npm run beuter\""
   },
