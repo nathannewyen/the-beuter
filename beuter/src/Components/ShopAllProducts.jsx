@@ -12,6 +12,7 @@ const ShopAllProducts = (props) => {
   const [itemsPerPage] = useState(9);
 
   const [products, setProducts] = useState([]);
+
   useEffect(() => {
     const fetchItems = async () => {
       setLoading(true);
@@ -21,7 +22,7 @@ const ShopAllProducts = (props) => {
     };
     document.title = `Shop - The Beuter`;
     fetchItems();
-  }, [props]);
+  }, [products, setProducts]);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
