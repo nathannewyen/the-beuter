@@ -16,14 +16,14 @@ const ShopAllProducts = (props) => {
   useEffect(() => {
     const fetchItems = async () => {
       setLoading(true);
-      const res = await axios.get("http://thebeuter.herokuapp.com/api/products");
+      const res = await axios.get("/api/products");
       setProducts(res.data);
-      console.log(res)
+      console.log(res.data)
       setLoading(false);
     };
     document.title = `Shop - The Beuter`;
     fetchItems();
-  }, [props]);
+  }, [products, setProducts]);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
