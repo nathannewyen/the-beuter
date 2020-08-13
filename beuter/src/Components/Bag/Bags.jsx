@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import { Link } from '@reach/router';
+import theme from '../../Styles/theme';
 import media from '../../Styles/media';
-import BagProducts from './BagProducts';
-import Pagination from '../Pagination';
+import mediaMin from '../../Styles/mediaMin';
+const { fontSizes } = theme;
 
 const Wrapper = styled.div`
 	margin: 50px 0;
@@ -12,20 +14,70 @@ const Wrapper = styled.div`
   `};
 `;
 
-const Bags = (props) => {
-	const [ loading, setLoading ] = useState(false);
-	const [ currentPage, setCurrentPage ] = useState(1);
-	const [ itemsPerPage ] = useState(9);
+const ShopWrapper = styled.div`
+	margin: 50px 0;
+	${media.tablet`margin: 10px 0;`};
+`;
 
+const ListItems = styled.ul`
+	margin-left: 200px;
+	text-align: left;
+	${mediaMin.laptop`margin-left: 140px;`};
+	${media.tablet`margin-left: 0px;`};
+`;
+
+const Item = styled.li`
+	margin: 10px 0;
+	list-type: none;
+	text-align: center;
+	display: inline-block;
+`;
+
+const ItemLink = styled(Link)`
+  color: black;
+  text-decoration: none;
+`;
+
+const ItemImage = styled.img`
+	src: url(${(props) => props.src});
+	width: 600px;
+	${media.desktop`width: 400px`};
+	${media.laptop`width: 250px`};
+	${media.tablet`width: 300px;`};
+	${media.mobileL`width: 150px;`};
+`;
+
+const ItemTitle = styled.p`
+	font-size: ${fontSizes.sm};
+	margin: 10px 20px;
+	font-weight: 500;
+	${media.laptop`
+  width: 230px;
+  `};
+
+	${media.tablet`
+  font-size: 12px;
+  width: 300px;
+  `};
+
+	${media.mobileL`
+  width: 120px; 
+  font-size: 9px;`};
+`;
+
+const ItemPrice = styled.p`
+	font-size: 11px;
+	font-weight: 500;
+`;
+
+const BagProducts = (props) => {
+	const nf = new Intl.NumberFormat();
 	const [ products, setProducts ] = useState([]);
 	useEffect(
 		() => {
 			const fetchItems = async () => {
-				setLoading(true);
 				const res = await axios.get('/api/products');
 				setProducts(res.data);
-				console.log(res.data);
-				setLoading(false);
 			};
 			document.title = `Shop - The Beuter`;
 			fetchItems();
@@ -33,18 +85,21 @@ const Bags = (props) => {
 		[ props ]
 	);
 
-	const indexOfLastItem = currentPage * itemsPerPage;
-	const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-	const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
-
-	const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
 	return (
-		<Wrapper>
-			<BagProducts products={currentItems} loading={loading} />{' '}
-			<Pagination itemsPerPage={itemsPerPage} totalItems={products.length} paginate={paginate} />{' '}
-		</Wrapper>
+		<ShopWrapper>
+			<ListItems>
+				{products.map((product, i) => (
+					<Item key={i}>
+						{product.category === 'bag' ? (
+							<ItemLink to={`/product/${product.title_url}`}>
+								<ItemImage src={product.img_url1} /> <ItemTitle> {product.title} </ItemTitle>
+								<ItemPrice>{nf.format(product.price)} vnd</ItemPrice>
+							</ItemLink>
+						) : null}
+					</Item>
+				))}
+			</ListItems>
+		</ShopWrapper>
 	);
 };
-
-export default Bags;
+export default BagProducts;
