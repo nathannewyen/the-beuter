@@ -14,6 +14,10 @@ import Cart from './Components/Cart';
 import Tops from './Components/Top/Tops';
 import Bottoms from './Components/Bottom/Bottoms';
 import Bags from './Components/Bag/Bags';
+
+import TShirt from './Components/Top/TShirt/TShirt';
+import Shirts from './Components/Top/Shirts/Shirts';
+
 import Checkout from './Components/Checkout';
 import Footer from './Components/Footer';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
@@ -357,6 +361,10 @@ const App = (props) => {
 							<ShopAllProducts path="/" />
 							<NewArrival path="/shop/new-arrival" />
 							<Tops path="/product-category/top" />
+							{/*  */}
+							<TShirt path="product-category/top/t-shirt" />
+							<Shirts path="product-category/top/shirts" />
+							{/*  */}
 							<Bottoms path="/product-category/bottom" />
 							<Bags path="/product-category/bag" />
 							<Product path="/product/:title_url" />

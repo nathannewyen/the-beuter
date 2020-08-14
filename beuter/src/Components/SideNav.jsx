@@ -72,8 +72,10 @@ const SideNav = (props) => {
 				<HamburgerSize>
 					<AllItems>
 						<ListItems to="/new-arrival"> NEW ARRIVAL </ListItems>
-						<ListItems to="/product-category/top"> TOPS </ListItems> <Item to="/"> T - Shirts </Item>
-						<Item to="/"> Shirts </Item> <Item to="/"> Hoodies </Item> <Item to="/"> Sweaters </Item>
+						<ListItems to="/product-category/top"> TOPS </ListItems>
+						<Item to="/product-category/top/t-shirt"> T - Shirts </Item>
+						<Item to="product-category/top/shirts"> Shirts </Item> <Item to="/"> Hoodies </Item>{' '}
+						<Item to="/"> Sweaters </Item>
 						<Item to="/"> Jackets & Coats </Item>
 						<ListItems to="/product-category/bottom"> BOTTOMS </ListItems> <Item to="/"> Pants </Item>
 						<Item to="/"> Shorts </Item> <Item to="/"> Jeans </Item>
@@ -87,8 +89,10 @@ const SideNav = (props) => {
 			<Sidenav>
 				<AllItems>
 					<ListItems to="/new-arrival"> NEW ARRIVAL </ListItems>
-					<ListItems to="/product-category/top"> TOPS </ListItems> <Item to="/"> T-Shirts </Item>
-					<Item to="/"> Shirts </Item> <Item to="/"> Hoodies </Item> <Item to="/"> Sweaters </Item>
+					<ListItems to="/product-category/top"> TOPS </ListItems>
+					<Item to="/product-category/top/t-shirt"> T-Shirts </Item>
+					<Item to="product-category/top/shirts"> Shirts </Item> <Item to="/"> Hoodies </Item>{' '}
+					<Item to="/"> Sweaters </Item>
 					<Item to="/"> Jackets & Coats </Item> <ListItems to="/product-category/bottom">BOTTOMS</ListItems>
 					<Item to="/"> Pants </Item> <Item to="/"> Shorts </Item> <Item to="/"> Jeans </Item>
 					<ListItems to="/product-category/bag"> BAGS & BACKPACKS </ListItems>{' '}

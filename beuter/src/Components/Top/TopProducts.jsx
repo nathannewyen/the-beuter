@@ -75,23 +75,20 @@ const TopProducts = ({ products, loading }) => {
 	return (
 		<ShopWrapper>
 			<ListItems>
-				{' '}
 				{products.map((product, i) => (
 					<Item key={i}>
-						{' '}
 						{product.category === 'top' ? (
 							<ItemLink to={`/product/${product.title_url}`}>
 								<ItemImage src={product.img_url1} /> <ItemTitle> {product.title} </ItemTitle>{' '}
 								<ItemPrice>
-									{' '}
 									{nf.format(product.price)}
-									vnd{' '}
-								</ItemPrice>{' '}
+									vnd
+								</ItemPrice>
 							</ItemLink>
-						) : null}{' '}
+						) : null}
 					</Item>
-				))}{' '}
-			</ListItems>{' '}
+				))}
+			</ListItems>
 		</ShopWrapper>
 	);
 };

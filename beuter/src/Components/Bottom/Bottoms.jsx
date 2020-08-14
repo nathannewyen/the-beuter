@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 const Bottoms = (props) => {
 	const [ loading, setLoading ] = useState(false);
 	const [ currentPage, setCurrentPage ] = useState(1);
-	const [ itemsPerPage ] = useState(9);
+	const [ itemsPerPage ] = useState(12);
 
 	const [ products, setProducts ] = useState([]);
 	useEffect(

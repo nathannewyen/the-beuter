@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Link } from '@reach/router';
 import theme from '../Styles/theme';
 import media from '../Styles/media';
-import mediaMin from '../Styles/mediaMin';
 const { fontSizes } = theme;
 
 const FooterWrapper = styled.div`
