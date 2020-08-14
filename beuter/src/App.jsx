@@ -163,7 +163,7 @@ const HamburgerUlityItem = styled.li`
 const HamburgerLine = styled.div`
 	position: relative;
 	cursor: pointer;
-	margin: 10px 0 -10px 20px;
+	margin: 10px;
 	width: 100%;
 	height: 0.3px;
 	background-color: black;
@@ -221,10 +221,7 @@ const App = (props) => {
 
 	useEffect(() => {
 		getNumbers();
-		setMenuOpen(false);
 	}, []);
-
-	const timeout = menuOpen ? loaderDelay : 0;
 
 	const [ isShowing, setIsShowing ] = useState(false);
 	const [ opacity, setOpacity ] = useState(1);
@@ -249,8 +246,6 @@ const App = (props) => {
 		setIsShowing(false);
 		setOpacity(1);
 	};
-
-	const fadeClass = menuOpen ? 'fade' : '';
 
 	const Wrapper = styled.div`opacity: ${opacity};`;
 
@@ -279,8 +274,8 @@ const App = (props) => {
 		<div>
 			<GlobalStyle />
 			{/* Hamburger Navbar */}
-			<TransitionGroup component={null}>
-				<CSSTransition className="slide" timeout={{ enter: 1000 }}>
+			<TransitionGroup>
+				<CSSTransition>
 					<HamburgerNav>
 						<HamburgerNavContainer>
 							<LogoLinkStyled to="/">

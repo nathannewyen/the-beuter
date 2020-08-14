@@ -5,7 +5,7 @@ import {
 const sizes = {
   mobileS: '320',
   mobileM: '375',
-  mobileL: '450',
+  mobileL: '500',
   tablet: '800',
   laptop: '1024',
   laptopL: '1440',
