@@ -1,23 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 import theme from '../Styles/theme';
-import mediaMin from '../Styles/mediaMin';
 import media from '../Styles/media';
 const { fontSizes } = theme;
 
 const Wrapper = styled.div`
-	margin: 50px 0 0;
+	margin-top: 50px;
 	width: 100%;
-	${mediaMin.desktop`margin-left: 400px;`};
+	margin-left: 40vw;
+	${media.tablet`margin-left: 30vw`};
+	${media.mobileL`margin-left: 0;`};
 `;
 
 const Container = styled.div`
 	width: 400px;
-	margin: 0 auto;
 	text-align: center;
 	${media.mobileL`
-  width: 100%;
-  padding: 1rem;
+  	width: 100%;
+  	padding: 1rem;
   `};
 `;
 

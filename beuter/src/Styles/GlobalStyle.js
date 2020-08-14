@@ -3,8 +3,7 @@ import {
 } from 'styled-components';
 import theme from './theme';
 const {
-  fontSizes,
-  fonts
+  fontSizes
 } = theme;
 
 const GlobalStyle = createGlobalStyle `

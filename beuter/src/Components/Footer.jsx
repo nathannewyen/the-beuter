@@ -3,22 +3,22 @@ import styled from 'styled-components';
 import { Link } from '@reach/router';
 import theme from '../Styles/theme';
 import media from '../Styles/media';
-const { fontSizes, fonts } = theme;
+import mediaMin from '../Styles/mediaMin';
+const { fontSizes } = theme;
 
 const FooterWrapper = styled.div`
 	padding: 0 0 10px;
-	font-family: ${fonts.Gotham};
 	font-size: ${fontSizes.sm};
 	font-weight: 500;
-	width: 100%;
+	width: 100w;
 `;
 
 const FooterContainer = styled.div`
 	justify-content: space-between;
 	display: flex;
 	${media.mobileL`
-  display: block;
-  text-align: center;
+  	display: block;
+  	text-align: center;
   `};
 `;
 
@@ -37,8 +37,8 @@ const LinkFooter = styled(Link)`
 const Beuter2020 = styled.span`
 	display: inline-block;
 	${media.mobileL`
-  display: block;
-  `};
+  	display: block;
+  	`};
 `;
 
 const Footer = (props) => {

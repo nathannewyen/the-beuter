@@ -39,7 +39,8 @@ const NavBar = styled.nav`
 const Container = styled.div`
 	min-height: 90vh;
 	width: 100%;
-	${media.tablet`min-height: 85vh;`};
+	${media.laptop`min-height: 110vh;`};
+	${media.tablet`min-height: 90vh;`};
 	${media.mobileL`min-height: 82vh;`};
 `;
 
@@ -145,12 +146,15 @@ const HamburgerUtilities = styled.div`
 	margin-top: 14px;
 `;
 
-const HamburgerUlityItem = styled.li``;
+const HamburgerUlityItem = styled.li`
+	list-style-type: none;
+	padding: 0 10px;
+`;
 
 const HamburgerLine = styled.div`
 	position: relative;
 	cursor: pointer;
-	margin: -10px 0 0 8px;
+	margin: 10px 0 -10px 20px;
 	width: 100%;
 	height: 0.3px;
 	background-color: black;

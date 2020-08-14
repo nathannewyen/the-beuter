@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import theme from '../Styles/theme';
-import mediaMin from '../Styles/mediaMin';
+import media from '../Styles/mediaMin';
 const { fontSizes } = theme;
 
 const ContactWrapper = styled.div`
-	margin: 50px 0;
-	width: 100%;
-	${mediaMin.desktop`margin-left: 400px;`};
+	margin-top: 50px;
+	width: 100vw;
 `;
 
 const ContactContainer = styled.div`
