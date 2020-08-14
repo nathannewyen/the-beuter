@@ -26,7 +26,7 @@ const GlobalStyle = createGlobalStyle `
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     line-height: 1.3;
-    font-family: ${fonts.Gotham};
+    font-family: system-ui;
     font-size: ${fontSizes.xl};
     letter-spacing: 0.5px;
     color: black;

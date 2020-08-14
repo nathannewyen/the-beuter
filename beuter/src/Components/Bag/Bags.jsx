@@ -7,13 +7,6 @@ import media from '../../Styles/media';
 import mediaMin from '../../Styles/mediaMin';
 const { fontSizes } = theme;
 
-const Wrapper = styled.div`
-	margin: 50px 0;
-	${media.tablet`
-  margin: 10px 0;
-  `};
-`;
-
 const ShopWrapper = styled.div`
 	margin: 50px 0;
 	${media.tablet`margin: 10px 0;`};
