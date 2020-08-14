@@ -71,34 +71,30 @@ const SideNav = (props) => {
 			{props.menuOpen ? (
 				<HamburgerSize>
 					<AllItems>
-						<ListItems to="/new-arrival"> NEW ARRIVAL </ListItems>
 						<ListItems to="/product-category/top"> TOPS </ListItems>
 						<Item to="/product-category/top/t-shirt"> T - Shirts </Item>
-						<Item to="product-category/top/shirts"> Shirts </Item> <Item to="/"> Hoodies </Item>{' '}
-						<Item to="/"> Sweaters </Item>
-						<Item to="/"> Jackets & Coats </Item>
-						<ListItems to="/product-category/bottom"> BOTTOMS </ListItems> <Item to="/"> Pants </Item>
-						<Item to="/"> Shorts </Item> <Item to="/"> Jeans </Item>
-						<ListItems to="#"> BAGS & BACKPACKS </ListItems> <ListItems to="#"> ACCESSORIES </ListItems>
-						<ListItems to="#"> COLLECTION </ListItems> <Item to="/"> SPRING SUMMER 2020 </Item>
-						<Item to="/"> BLANKS BY BEUTER </Item> <ListItems to="#"> CAMPAIGN </ListItems>
+						<Item to="product-category/top/shirts"> Shirts </Item>
+						<Item to="product-category/top/hoodies"> Hoodies </Item>
+						<Item to="product-category/top/coats"> Jackets & Coats </Item>
+						<ListItems to="/product-category/bottom"> BOTTOMS </ListItems>
+						<Item to="product-category/bottom/pants"> Pants </Item>
+						<Item to="product-category/bottom/shorts"> Shorts </Item>
+						<ListItems to="#"> BAGS & BACKPACKS </ListItems>
 						<ListItems to="/about-us"> ABOUT US </ListItems> <ListItems to="/contact"> CONTACT </ListItems>
 					</AllItems>
 				</HamburgerSize>
 			) : null}
 			<Sidenav>
 				<AllItems>
-					<ListItems to="/new-arrival"> NEW ARRIVAL </ListItems>
 					<ListItems to="/product-category/top"> TOPS </ListItems>
 					<Item to="/product-category/top/t-shirt"> T-Shirts </Item>
-					<Item to="product-category/top/shirts"> Shirts </Item> <Item to="/"> Hoodies </Item>{' '}
-					<Item to="/"> Sweaters </Item>
-					<Item to="/"> Jackets & Coats </Item> <ListItems to="/product-category/bottom">BOTTOMS</ListItems>
-					<Item to="/"> Pants </Item> <Item to="/"> Shorts </Item> <Item to="/"> Jeans </Item>
-					<ListItems to="/product-category/bag"> BAGS & BACKPACKS </ListItems>{' '}
-					<ListItems to="#"> ACCESSORIES </ListItems>
-					<ListItems to="#"> COLLECTION </ListItems> <Item to="/"> SPRING SUMMER 2020 </Item>
-					<Item to="/"> BLANKS BY BEUTER </Item> <ListItems to="#"> CAMPAIGN </ListItems>
+					<Item to="product-category/top/shirts"> Shirts </Item>
+					<Item to="product-category/top/hoodies"> Hoodies </Item>
+					<Item to="product-category/top/coats"> Jackets & Coats </Item>
+					<ListItems to="/product-category/bottom">BOTTOMS</ListItems>
+					<Item to="product-category/bottom/pants"> Pants </Item>
+					<Item to="product-category/bottom/shorts"> Shorts </Item>
+					<ListItems to="/product-category/bag"> BAGS & BACKPACKS </ListItems>
 					<ListItems to="/about-us"> ABOUT US </ListItems> <ListItems to="/contact"> CONTACT </ListItems>
 				</AllItems>
 			</Sidenav>

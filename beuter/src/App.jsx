@@ -17,6 +17,11 @@ import Bags from './Components/Bag/Bags';
 
 import TShirt from './Components/Top/TShirt/TShirt';
 import Shirts from './Components/Top/Shirts/Shirts';
+import Hoodies from './Components/Top/Hoodies/Hoodies';
+import Coats from './Components/Top/Coats/Coats';
+
+import Shorts from './Components/Bottom/Shorts/Shorts';
+import Pants from './Components/Bottom/Pants/Pants';
 
 import Checkout from './Components/Checkout';
 import Footer from './Components/Footer';
@@ -364,6 +369,11 @@ const App = (props) => {
 							{/*  */}
 							<TShirt path="product-category/top/t-shirt" />
 							<Shirts path="product-category/top/shirts" />
+							<Hoodies path="product-category/top/hoodies" />
+							<Coats path="product-category/top/coats" />
+
+							<Shorts path="product-category/bottom/shorts" />
+							<Pants path="product-category/bottom/pants" />
 							{/*  */}
 							<Bottoms path="/product-category/bottom" />
 							<Bags path="/product-category/bag" />
