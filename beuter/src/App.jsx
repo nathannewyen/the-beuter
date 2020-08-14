@@ -38,7 +38,7 @@ import styled from 'styled-components';
 import theme from './Styles/theme';
 import media from './Styles/media';
 import mediaMin from './Styles/mediaMin';
-const { fontSizes, loaderDelay } = theme;
+const { fontSizes } = theme;
 
 const NavBar = styled.nav`
 	padding: 30px 70px;
@@ -353,7 +353,7 @@ const App = (props) => {
 					<SideNav menuOpen={menuOpen} />
 					<RouterStyle>
 						<Router>
-							<ContactForm path="/contact" />
+							<ContactForm path="/contact" menuOpen={menuOpen} />
 							<SizeChart path="/size-chart" />
 							<ShippingAndReturn path="/shipping-return" />
 							<PrivacyAndPolicy path="/privacy-policy" />

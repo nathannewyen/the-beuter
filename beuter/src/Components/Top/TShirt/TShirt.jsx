@@ -3,22 +3,19 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { Link } from '@reach/router';
 import media from '../../../Styles/media';
+import mediaMin from '../../../Styles/mediaMin';
 import theme from '../../../Styles/theme';
 const { fontSizes } = theme;
 
 const InfoWrapper = styled.div`
-	margin: 50px;
-	padding: 0px 50px;
-	width: 100%;
-	${media.tablet`
-  margin: 0;
-  padding: 0;
-  `};
+	margin: 50px 0;
+	${media.tablet`margin: 10px 0;`};
 `;
-
 const ListItems = styled.ul`
-	margin-left: 50px;
-	${media.tablet`margin: 0;`};
+	margin-left: 200px;
+	text-align: left;
+	${mediaMin.laptop`margin-left: 140px;`};
+	${media.tablet`margin-left: 0px;`};
 `;
 
 const Item = styled.li`
@@ -35,7 +32,7 @@ const ItemLink = styled(Link)`
 
 const ItemImage = styled.img`
 	src: url(${(props) => props.src});
-	width: 550px;
+	width: 600px;
 	${media.desktop`width: 400px`};
 	${media.laptop`width: 250px`};
 	${media.tablet`width: 300px;`};
@@ -43,17 +40,27 @@ const ItemImage = styled.img`
 `;
 
 const ItemTitle = styled.p`
-	font-size: ${fontSizes.xs};
+	font-size: ${fontSizes.sm};
+	margin: 10px 20px;
 	font-weight: 500;
-	width: 200px;
-	margin: 10px auto;
+	${media.laptop`
+  width: 230px;
+  `};
+
+	${media.tablet`
+  font-size: 12px;
+  width: 300px;
+  `};
+
+	${media.mobileL`
+  width: 120px; 
+  font-size: 9px;`};
 `;
 
 const ItemPrice = styled.p`
 	font-size: 11px;
 	font-weight: 500;
 `;
-
 const TShirt = (props) => {
 	const nf = new Intl.NumberFormat();
 	const [ products, setProducts ] = useState([]);

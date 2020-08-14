@@ -79,7 +79,7 @@ const SideNav = (props) => {
 						<ListItems to="/product-category/bottom"> BOTTOMS </ListItems>
 						<Item to="product-category/bottom/pants"> Pants </Item>
 						<Item to="product-category/bottom/shorts"> Shorts </Item>
-						<ListItems to="#"> BAGS & BACKPACKS </ListItems>
+						<ListItems to="/product-category/bag"> BAGS & BACKPACKS </ListItems>
 						<ListItems to="/about-us"> ABOUT US </ListItems> <ListItems to="/contact"> CONTACT </ListItems>
 					</AllItems>
 				</HamburgerSize>

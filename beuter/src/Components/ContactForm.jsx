@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import theme from '../Styles/theme';
+import media from '../Styles/media';
 const { fontSizes } = theme;
 
 const ContactWrapper = styled.div`
@@ -11,6 +12,10 @@ const ContactWrapper = styled.div`
 const ContactContainer = styled.div`
 	width: 400px;
 	margin: 0 auto;
+	${media.mobileL`
+  	width: 100%;
+  	padding: 1rem;
+  `};
 `;
 
 const Title = styled.p`
@@ -60,6 +65,7 @@ const FormTextarea = styled.textarea`
 `;
 
 const ContactForm = (props) => {
+	console.log(props);
 	return (
 		<ContactWrapper>
 			<ContactContainer>
