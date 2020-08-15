@@ -218,7 +218,6 @@ const HamburgerSearch = styled.div`
 
 const App = (props) => {
 	const [ menuOpen, setMenuOpen ] = useState(false);
-
 	useEffect(() => {
 		getNumbers();
 	}, []);
@@ -350,7 +349,7 @@ const App = (props) => {
 
 			<Wrapper>
 				<Container>
-					<SideNav menuOpen={menuOpen} />
+					<SideNav menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 					<RouterStyle>
 						<Router>
 							<ContactForm path="/contact" menuOpen={menuOpen} />

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from '@reach/router';
 import theme from '../Styles/theme';
 import media from '../Styles/media';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 const { fontSizes } = theme;
 
 const Wrapper = styled.div``;
@@ -70,7 +71,11 @@ const SideNav = (props) => {
 		<Wrapper>
 			{props.menuOpen ? (
 				<HamburgerSize>
-					<AllItems>
+					<AllItems
+						onClick={() => {
+							props.setMenuOpen(!props.menuOpen);
+						}}
+					>
 						<ListItems to="/product-category/top"> TOPS </ListItems>
 						<Item to="/product-category/top/t-shirt"> T - Shirts </Item>
 						<Item to="product-category/top/shirts"> Shirts </Item>

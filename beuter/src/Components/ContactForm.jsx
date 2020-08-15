@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import theme from '../Styles/theme';
 import media from '../Styles/media';
@@ -65,7 +65,6 @@ const FormTextarea = styled.textarea`
 `;
 
 const ContactForm = (props) => {
-	console.log(props);
 	return (
 		<ContactWrapper>
 			<ContactContainer>
