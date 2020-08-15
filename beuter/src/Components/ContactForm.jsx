@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import theme from '../Styles/theme';
 import media from '../Styles/media';
+import { CSSTransition } from 'react-transition-group';
 const { fontSizes } = theme;
 
 const ContactWrapper = styled.div`

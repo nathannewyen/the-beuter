@@ -15,10 +15,16 @@ const Wrapper = styled.div`
 const Container = styled.div`
 	width: 600px;
 	margin: 10% auto;
+
 	${media.laptop`
-  width: 500px;
-  margin: 20%;
-  `};
+  	width: 500px;
+  	margin: 20%;
+  	`};
+
+	${media.mobileL`
+   margin: 50% 0;
+   width: 100%;
+   padding: 1rem;`};
 `;
 
 const CloseButton = styled(Link)`
@@ -29,6 +35,9 @@ const CloseButton = styled(Link)`
   font-weight: 600;
   text-decoration: none;
   letter-spacing: 0.5px;
+  font-size: ${fontSizes.s};
+
+  ${media.mobileL`margin-bottom: 15px;`}
 `;
 
 const Children = styled.div``;
@@ -43,7 +52,7 @@ const SearchBox = (props) => {
 		>
 			<Container>
 				<CloseButton to="#" onClick={props.close}>
-					CLOSE SEARCH{' '}
+					CLOSE SEARCH {' '}
 					<svg width="8" height="9" xmlns="http://www.w3.org/2000/svg">
 						<path
 							d="M4.707 4.5l3.147 3.146a.5.5 0 1 1-.708.708L4 5.207.854 8.354a.5.5 0 1 1-.708-.708L3.293 4.5.146 1.354A.5.5 0 1 1 .854.646L4 3.793 7.146.646a.5.5 0 1 1 .708.708L4.707 4.5z"
@@ -52,7 +61,7 @@ const SearchBox = (props) => {
 						/>
 					</svg>
 				</CloseButton>
-				<Children>{props.children}</Children>
+				<Children> {props.children} </Children>
 			</Container>
 		</Wrapper>
 	);

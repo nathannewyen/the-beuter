@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { CSSTransition, Transition } from 'react-transition-group';
 import SideNav from './Components/SideNav';
 import SearchBox from './Components/SearchBox.jsx';
 import SearchInfo from './Components/SearchInfo';
@@ -25,7 +26,6 @@ import Pants from './Components/Bottom/Pants/Pants';
 
 import Checkout from './Components/Checkout';
 import Footer from './Components/Footer';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import Form from './Components/Form';
 
@@ -38,7 +38,7 @@ import styled from 'styled-components';
 import theme from './Styles/theme';
 import media from './Styles/media';
 import mediaMin from './Styles/mediaMin';
-const { fontSizes } = theme;
+const { fontSizes, loaderDelay } = theme;
 
 const NavBar = styled.nav`
 	padding: 30px 70px;
@@ -58,7 +58,7 @@ const UlityItem = styled.li`
 	margin: 0 30px;
 `;
 
-const FormSearch = styled.form``;
+const FormSearch = styled.form`${media.mobileL`width: 345px;`};`;
 
 const SearchProduct = styled.span`
 	font-size: ${fontSizes.xs};
@@ -118,6 +118,7 @@ const SearchButton = styled.input`
 	font-weight: 600;
 	font-size: ${fontSizes.md};
 	letter-spacing: 0.5px;
+	${media.mobileL`margin: -10px;`};
 `;
 
 const RouterStyle = styled.div`display: inline-block;`;
@@ -160,6 +161,11 @@ const HamburgerUlityItem = styled.li`
 	padding: 0 10px;
 `;
 
+const HamburgerSearch = styled.div`
+	${mediaMin.tablet`visibility: hidden;`};
+	${media.tablet`visibility: visible;`};
+`;
+
 const HamburgerLine = styled.div`
 	position: relative;
 	cursor: pointer;
@@ -172,6 +178,11 @@ const HamburgerLine = styled.div`
 	justify-content: center;
 	transition-duration: 0.22s;
 	transition-property: transform;
+	transition-delay: ${(props) => (props.menuOpen ? `0.12s` : `0s`)};
+	transform: rotate(${(props) => (props.menuOpen ? `225deg` : `0deg`)});
+	transition-timing-function: cubic-bezier(
+		${(props) => (props.menuOpen ? `0.215, 0.61, 0.355, 1` : `0.55, 0.055, 0.675, 0.19`)}
+	);
 	&:before,
 	&:after {
 		content: "";
@@ -179,15 +190,16 @@ const HamburgerLine = styled.div`
 		z-index: 1;
 		top: -6px;
 		width: 100%;
-		height: 0.3px;
 		background-color: inherit;
+		height: 0.3px;
+		transition-timing-function: ease;
+		transition-duration: 0.15s;
+		transition-property: transform;
+		border-radius: 4px;
 	}
 	&:after {
 		top: 6px;
 	}
-	transition-timing-function: cubic-bezier(
-		${(props) => (props.menuOpen ? `0.215, 0.61, 0.355, 1` : `0.55, 0.055, 0.675, 0.19`)}
-	);
 `;
 
 const InputNavbar = styled.input`
@@ -209,11 +221,6 @@ const InputNavbar = styled.input`
 		top: 0;
 		transform: rotate(90deg);
 	}
-`;
-
-const HamburgerSearch = styled.div`
-	${mediaMin.tablet`visibility: hidden;`};
-	${media.tablet`visibility: visible;`};
 `;
 
 const App = (props) => {
@@ -323,8 +330,7 @@ const App = (props) => {
 				<Utilities>
 					<UlityItem>
 						<SearchProduct type="submit" onClick={openModalHandler}>
-							SEARCH A PRODUCT
-							<Icon className="fal fa-search fa-rotate-90" />
+							SEARCH A PRODUCT <Icon className="fal fa-search fa-rotate-90" />
 						</SearchProduct>
 					</UlityItem>
 					<UlityItem>
@@ -351,32 +357,34 @@ const App = (props) => {
 				<Container>
 					<SideNav menuOpen={menuOpen} setMenuOpen={setMenuOpen} refreshPage={refreshPage} />
 					<RouterStyle>
-						<Router>
-							<ContactForm path="/contact" menuOpen={menuOpen} />
-							<SizeChart path="/size-chart" />
-							<ShippingAndReturn path="/shipping-return" />
-							<PrivacyAndPolicy path="/privacy-policy" />
-							<AboutUs path="/about-us" />
-							<ShopAllProducts path="/" />
-							<NewArrival path="/shop/new-arrival" />
-							<Tops path="/product-category/top" />
-							{/*  */}
-							<TShirt path="product-category/top/t-shirt" />
-							<Shirts path="product-category/top/shirts" />
-							<Hoodies path="product-category/top/hoodies" />
-							<Coats path="product-category/top/coats" />
+						<CSSTransition>
+							<Router>
+								<ContactForm path="/contact" menuOpen={menuOpen} />
+								<SizeChart path="/size-chart" />
+								<ShippingAndReturn path="/shipping-return" />
+								<PrivacyAndPolicy path="/privacy-policy" />
+								<AboutUs path="/about-us" />
+								<ShopAllProducts path="/" />
+								<NewArrival path="/shop/new-arrival" />
+								<Tops path="/product-category/top" />
+								{/*  */}
+								<TShirt path="product-category/top/t-shirt" />
+								<Shirts path="product-category/top/shirts" />
+								<Hoodies path="product-category/top/hoodies" />
+								<Coats path="product-category/top/coats" />
 
-							<Shorts path="product-category/bottom/shorts" />
-							<Pants path="product-category/bottom/pants" />
-							{/*  */}
-							<Bottoms path="/product-category/bottom" />
-							<Bags path="/product-category/bag" />
-							<Product path="/product/:title_url" />
-							<SearchInfo path="/search/:title" searchTerm={searchTerm} title="Profile" />
-							<Cart path="/cart" />
-							<Checkout path="/checkout" />
-							<Form path="/add/form" />
-						</Router>
+								<Shorts path="product-category/bottom/shorts" />
+								<Pants path="product-category/bottom/pants" />
+								{/*  */}
+								<Bottoms path="/product-category/bottom" />
+								<Bags path="/product-category/bag" />
+								<Product path="/product/:title_url" />
+								<SearchInfo path="/search/:title" searchTerm={searchTerm} title="Profile" />
+								<Cart path="/cart" />
+								<Checkout path="/checkout" />
+								<Form path="/add/form" />
+							</Router>
+						</CSSTransition>
 					</RouterStyle>
 				</Container>
 				<Footer />

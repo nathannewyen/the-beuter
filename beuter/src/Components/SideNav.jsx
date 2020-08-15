@@ -4,9 +4,12 @@ import { Link } from '@reach/router';
 import theme from '../Styles/theme';
 import media from '../Styles/media';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import '../Styles/style.css';
 const { fontSizes } = theme;
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+transform: 'translateX(-100%)'};
+`;
 
 const Sidenav = styled.nav`
 	padding: 0 30px;
@@ -18,7 +21,7 @@ const Sidenav = styled.nav`
 	overflow-x: hidden;
 	width: 300px;
 
-	${media.laptop`
+	${media.laptop`	
   width: 200px;
   padding: 0 10px;
   `};
@@ -85,7 +88,8 @@ const SideNav = (props) => {
 						<Item to="product-category/bottom/pants"> Pants </Item>
 						<Item to="product-category/bottom/shorts"> Shorts </Item>
 						<ListItems to="/product-category/bag"> BAGS & BACKPACKS </ListItems>
-						<ListItems to="/about-us"> ABOUT US </ListItems> <ListItems to="/contact"> CONTACT </ListItems>
+						<ListItems to="/about-us"> ABOUT US </ListItems>
+						<ListItems to="/contact"> CONTACT </ListItems>
 					</AllItems>
 				</HamburgerSize>
 			) : null}
