@@ -70,7 +70,7 @@ const SideNav = (props) => {
 	return (
 		<Wrapper>
 			{props.menuOpen ? (
-				<HamburgerSize>
+				<HamburgerSize onClick={props.refreshPage}>
 					<AllItems
 						onClick={() => {
 							props.setMenuOpen(!props.menuOpen);

@@ -217,6 +217,10 @@ const HamburgerSearch = styled.div`
 `;
 
 const App = (props) => {
+	function refreshPage() {
+		window.location.reload(false);
+	}
+
 	const [ menuOpen, setMenuOpen ] = useState(false);
 	useEffect(() => {
 		getNumbers();
@@ -273,32 +277,28 @@ const App = (props) => {
 		<div>
 			<GlobalStyle />
 			{/* Hamburger Navbar */}
-			<TransitionGroup>
-				<CSSTransition>
-					<HamburgerNav>
-						<HamburgerNavContainer>
-							<LogoLinkStyled to="/">
-								<LogoNav src="https://thebeuter.com/wp-content/uploads/2020/04/logo-black.png" />
-							</LogoLinkStyled>
-							<HamburgerUtilities>
-								<HamburgerUlityItem>
-									<Icon className="fal fa-search fa-rotate-90" onClick={openModalHandler} />
-								</HamburgerUlityItem>
-								<HamburgerUlityItem>
-									<Link to="/cart" style={{ color: 'black', textDecoration: 'none' }}>
-										<Icon className="fal fa-shopping-bag" />
-										<CartNumb>({props.basketProps.basketNumbers})</CartNumb>
-									</Link>
-								</HamburgerUlityItem>
-								<HamburgerUlityItem>
-									<InputNavbar type="checkbox" onClick={() => setMenuOpen(!menuOpen)} />
-									<HamburgerLine />
-								</HamburgerUlityItem>
-							</HamburgerUtilities>
-						</HamburgerNavContainer>
-					</HamburgerNav>
-				</CSSTransition>
-			</TransitionGroup>
+			<HamburgerNav>
+				<HamburgerNavContainer>
+					<LogoLinkStyled to="/">
+						<LogoNav src="https://thebeuter.com/wp-content/uploads/2020/04/logo-black.png" />
+					</LogoLinkStyled>
+					<HamburgerUtilities>
+						<HamburgerUlityItem>
+							<Icon className="fal fa-search fa-rotate-90" onClick={openModalHandler} />
+						</HamburgerUlityItem>
+						<HamburgerUlityItem>
+							<Link to="/cart" style={{ color: 'black', textDecoration: 'none' }}>
+								<Icon className="fal fa-shopping-bag" />
+								<CartNumb>({props.basketProps.basketNumbers})</CartNumb>
+							</Link>
+						</HamburgerUlityItem>
+						<HamburgerUlityItem>
+							<InputNavbar type="checkbox" onClick={() => setMenuOpen(!menuOpen)} />
+							<HamburgerLine />
+						</HamburgerUlityItem>
+					</HamburgerUtilities>
+				</HamburgerNavContainer>
+			</HamburgerNav>
 			{/* End Hamburger Navbar */}
 			<HamburgerSearch>
 				{isShowing ? <SearchBoxModal onClick={closeModalHandler} /> : null}
@@ -349,7 +349,7 @@ const App = (props) => {
 
 			<Wrapper>
 				<Container>
-					<SideNav menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+					<SideNav menuOpen={menuOpen} setMenuOpen={setMenuOpen} refreshPage={refreshPage} />
 					<RouterStyle>
 						<Router>
 							<ContactForm path="/contact" menuOpen={menuOpen} />
