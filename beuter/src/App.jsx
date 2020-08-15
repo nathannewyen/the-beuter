@@ -118,7 +118,6 @@ const SearchButton = styled.input`
 	font-weight: 600;
 	font-size: ${fontSizes.md};
 	letter-spacing: 0.5px;
-	${media.mobileL`margin: -10px;`};
 `;
 
 const RouterStyle = styled.div`display: inline-block;`;
@@ -257,14 +256,23 @@ const App = (props) => {
 		setOpacity(1);
 	};
 
-	const Wrapper = styled.div`opacity: ${opacity};`;
+	const Wrapper = styled.div`
+		opacity: ${(isShowing) => (isShowing ? opacity : null)};
+		transition: opacity 5s ease-in;
+		-moz-transition: opacity 5s ease-in;
+		-webkit-transition: opacity 5s ease-in;
+		-o-transition: opacity 5s ease-in;
+	`;
 
 	const LogoNav = styled.img`
 		src: url(${(props) => props.src});
 		width: 180px;
-		opacity: ${opacity};
 		position: fixed;
-
+		opacity: ${(isShowing) => (isShowing ? opacity : null)};
+		transition: opacity 5s ease-in;
+		-moz-transition: opacity 5s ease-in;
+		-webkit-transition: opacity 5s ease-in;
+		-o-transition: opacity 5s ease-in;
 		${media.tablet`width: 140px;`};
 		${media.mobileL`vertical-align: middle`};
 	`;

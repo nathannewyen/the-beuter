@@ -42,7 +42,7 @@ const PriceInfo = styled.span`
 
 const CheckOutButton = styled.button`
 	width: 100%;
-	padding: 10px 0 5px;
+	padding: 10px 0;
 	background-color: black;
 	border: 0;
 	font-size: ${fontSizes.s};

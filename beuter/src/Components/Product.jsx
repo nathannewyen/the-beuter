@@ -126,7 +126,7 @@ const BuyButton = styled.button`
 	letter-spacing: 2px;
 	color: white;
 	margin: 10px auto;
-	padding: 10px 0 5px;
+	padding: 10px 0;
 	border: 0;
 	display: inline-block;
 	text-align: center;

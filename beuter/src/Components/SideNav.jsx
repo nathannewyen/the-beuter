@@ -4,7 +4,6 @@ import { Link } from '@reach/router';
 import theme from '../Styles/theme';
 import media from '../Styles/media';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import '../Styles/style.css';
 const { fontSizes } = theme;
 
 const Wrapper = styled.div`
@@ -20,7 +19,6 @@ const Sidenav = styled.nav`
 	z-index: 1;
 	overflow-x: hidden;
 	width: 300px;
-
 	${media.laptop`	
   width: 200px;
   padding: 0 10px;
@@ -67,44 +65,52 @@ const Item = styled(Link)`
   display: block;
 `;
 
-const HamburgerSize = styled.nav``;
+const HamburgerSize = styled.nav`
+	transform: ${(props) => (props.menuOpen ? 'translateX(0)' : 'translateX(0)')};
+	transition: transform 0.3s ease-in-out;
+`;
 
 const SideNav = (props) => {
 	return (
 		<Wrapper>
 			{props.menuOpen ? (
-				<HamburgerSize onClick={props.refreshPage}>
-					<AllItems
-						onClick={() => {
-							props.setMenuOpen(!props.menuOpen);
-						}}
-					>
-						<ListItems to="/product-category/top"> TOPS </ListItems>
-						<Item to="/product-category/top/t-shirt"> T - Shirts </Item>
-						<Item to="product-category/top/shirts"> Shirts </Item>
-						<Item to="product-category/top/hoodies"> Hoodies </Item>
-						<Item to="product-category/top/coats"> Jackets & Coats </Item>
-						<ListItems to="/product-category/bottom"> BOTTOMS </ListItems>
-						<Item to="product-category/bottom/pants"> Pants </Item>
-						<Item to="product-category/bottom/shorts"> Shorts </Item>
-						<ListItems to="/product-category/bag"> BAGS & BACKPACKS </ListItems>
-						<ListItems to="/about-us"> ABOUT US </ListItems>
-						<ListItems to="/contact"> CONTACT </ListItems>
-					</AllItems>
-				</HamburgerSize>
+				<TransitionGroup>
+					<CSSTransition>
+						<HamburgerSize onClick={props.refreshPage}>
+							<AllItems
+								onClick={() => {
+									props.setMenuOpen(!props.menuOpen);
+								}}
+							>
+								<ListItems to="/product-category/top"> TOPS </ListItems>
+								<Item to="/product-category/top/t-shirt"> T - Shirts </Item>
+								<Item to="product-category/top/shirts"> Shirts </Item>
+								<Item to="product-category/top/hoodies"> Hoodies </Item>
+								<Item to="product-category/top/coats"> Jackets & Coats </Item>
+								<ListItems to="/product-category/bottom"> BOTTOMS </ListItems>
+								<Item to="product-category/bottom/pants"> Pants </Item>
+								<Item to="product-category/bottom/shorts"> Shorts </Item>
+								<ListItems to="/product-category/bag"> BAGS & BACKPACKS </ListItems>
+								<ListItems to="/about-us"> ABOUT US </ListItems>{' '}
+								<ListItems to="/contact"> CONTACT </ListItems>
+							</AllItems>
+						</HamburgerSize>
+					</CSSTransition>
+				</TransitionGroup>
 			) : null}
 			<Sidenav>
 				<AllItems>
 					<ListItems to="/product-category/top"> TOPS </ListItems>
-					<Item to="/product-category/top/t-shirt"> T-Shirts </Item>
+					<Item to="/product-category/top/t-shirt"> T - Shirts </Item>
 					<Item to="product-category/top/shirts"> Shirts </Item>
 					<Item to="product-category/top/hoodies"> Hoodies </Item>
 					<Item to="product-category/top/coats"> Jackets & Coats </Item>
-					<ListItems to="/product-category/bottom">BOTTOMS</ListItems>
+					<ListItems to="/product-category/bottom"> BOTTOMS </ListItems>
 					<Item to="product-category/bottom/pants"> Pants </Item>
 					<Item to="product-category/bottom/shorts"> Shorts </Item>
 					<ListItems to="/product-category/bag"> BAGS & BACKPACKS </ListItems>
-					<ListItems to="/about-us"> ABOUT US </ListItems> <ListItems to="/contact"> CONTACT </ListItems>
+					<ListItems to="/about-us"> ABOUT US </ListItems> <ListItems to="/contact
+		"> CONTACT </ListItems>
 				</AllItems>
 			</Sidenav>
 		</Wrapper>

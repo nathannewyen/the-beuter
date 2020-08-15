@@ -94,7 +94,7 @@ const FormTextarea = styled.textarea`
 
 const PlaceOrderButton = styled.button`
 	width: 100%;
-	padding: 10px 0 5px;
+	padding: 10px 0;
 	margin-top: 30px;
 	background-color: black;
 	border: 0;
