@@ -122,10 +122,31 @@ const SearchButton = styled.input`
 
 const RouterStyle = styled.div`display: inline-block;`;
 
+const HomePageContainer = styled.div`
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+`;
+
+const ImageMobile = styled.img`
+	src: url(${(props) => props.src});
+	height: 100%;
+	width: auto;
+	display: block;
+	max-width: none;
+	transform: translateX(-50%);
+	position: absolute;
+	top: 0;
+	left: 50%;
+	${mediaMin.tablet`visibility: hidden;`};
+`;
+
 const VideoSource = styled.video`
 	src: url(${(props) => props.src});
 	position: absolute;
 	width: 100%;
+	${media.mobileL`visibility: hidden;`};
 `;
 
 const FragmentStyle = styled.div`padding: 20px;`;
@@ -313,7 +334,7 @@ const App = (props) => {
 	return (
 		<Fragment>
 			{storeOpen ? (
-				<div>
+				<Fragment>
 					<GlobalStyle />
 					<HamburgerNav>
 						<HamburgerNavContainer>
@@ -365,10 +386,7 @@ const App = (props) => {
 								</SearchProduct>
 							</UlityItem>
 							<UlityItem>
-								<ShoppingBag to="/cart">
-									{' '}
-									SHOPPING BAG ( {props.basketProps.basketNumbers} )
-								</ShoppingBag>
+								<ShoppingBag to="/cart">SHOPPING BAG ( {props.basketProps.basketNumbers} )</ShoppingBag>
 							</UlityItem>
 						</Utilities>
 						{isShowing ? <SearchBoxModal onClick={closeModalHandler} /> : null}
@@ -389,7 +407,7 @@ const App = (props) => {
 
 					<Wrapper>
 						<Container>
-							<SideNav menuOpen={menuOpen} setMenuOpen={setMenuOpen} refreshPage={refreshPage} />
+							<SideNav menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 							<RouterStyle>
 								<Router>
 									<ContactForm path="/contact" menuOpen={menuOpen} />
@@ -421,15 +439,18 @@ const App = (props) => {
 						</Container>
 						<Footer />
 					</Wrapper>
-				</div>
+				</Fragment>
 			) : (
 				<Fragment>
-					<VideoSource
-						src="https://thebeuter.com/wp-content/uploads/2020/04/Wellcome_Smaillsize.mp4"
-						autoPlay
-						loop
-						muted
-					/>
+					<HomePageContainer>
+						<VideoSource
+							src="https://thebeuter.com/wp-content/uploads/2020/04/Wellcome_Smaillsize.mp4"
+							autoPlay
+							loop
+							muted
+						/>
+						<ImageMobile src="https://thebeuter.com/wp-content/uploads/2020/04/Wellcome-1.jpg" />
+					</HomePageContainer>
 					<FragmentStyle>
 						<LogoLinkStyled to="/">
 							<LogoNav src="https://thebeuter.com/wp-content/uploads/2020/04/logo-white.png" />

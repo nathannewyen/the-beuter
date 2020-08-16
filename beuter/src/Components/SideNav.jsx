@@ -76,10 +76,9 @@ const SideNav = (props) => {
 						onClick={() => {
 							props.setMenuOpen(!props.menuOpen);
 						}}
-						style={{ transform: `translateX(0%)`, transition: `all 300ms` }}
 					>
 						<ListItems to="/product-category/top"> TOPS </ListItems>
-						<Item to="/product-category/top/t-shirt"> T - Shirts </Item>
+						<Item to="/product-category/top/t-shirt"> T-Shirts </Item>
 						<Item to="product-category/top/shirts"> Shirts </Item>
 						<Item to="product-category/top/hoodies"> Hoodies </Item>
 						<Item to="product-category/top/coats"> Jackets & Coats </Item>
@@ -95,7 +94,7 @@ const SideNav = (props) => {
 			<Sidenav>
 				<AllItems>
 					<ListItems to="/product-category/top"> TOPS </ListItems>
-					<Item to="/product-category/top/t-shirt"> T - Shirts </Item>
+					<Item to="/product-category/top/t-shirt"> T-Shirts </Item>
 					<Item to="product-category/top/shirts"> Shirts </Item>
 					<Item to="product-category/top/hoodies"> Hoodies </Item>
 					<Item to="product-category/top/coats"> Jackets & Coats </Item>
