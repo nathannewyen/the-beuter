@@ -148,7 +148,7 @@ const VideoSource = styled.video`
 	${media.mobileL`visibility: hidden;`};
 `;
 
-const FragmentStyle = styled.div`padding: 20px;`;
+const FragmentStyle = styled.div`padding: 30px 20px;`;
 
 const StoreOpen = styled.button`
 	border: 0;
@@ -158,7 +158,7 @@ const StoreOpen = styled.button`
 	display: inline-block;
 	color: white;
 	cursor: pointer;
-	margin: 30px;
+	margin: 30px -5px;
 	font-weight: bold;
 	font-family: system-ui;
 `;
@@ -189,11 +189,6 @@ const HamburgerNavContainer = styled.div`
 	line-height: 1;
 	align-items: center;
 	transition: all 0.9s ease;
-`;
-
-const HamburgerUtilities = styled.div`
-	display: flex;
-	margin-top: 14px;
 `;
 
 const HamburgerUlityItem = styled.li`
@@ -338,6 +333,12 @@ const App = (props) => {
 		opacity: ${opacity};
 	`;
 
+	const HamburgerUtilities = styled.div`
+		display: flex;
+		margin-top: 14px;
+		opacity: ${opacity};
+	`;
+
 	const FadeSearchBox = styled.div`animation: ${(isShowing) => (isShowing ? fadeOut : fadeIn)} 0.3s linear;`;
 	const FadePage = styled.div`animation: ${(isShowing) => (isShowing ? fadeIn : fadeOut)} 0.3s linear;`;
 
@@ -347,42 +348,46 @@ const App = (props) => {
 				<Fragment>
 					<GlobalStyle />
 					<HamburgerNav>
-						<HamburgerNavContainer>
-							<LogoLinkStyled to="/">
-								<LogoNav src="https://thebeuter.com/wp-content/uploads/2020/04/logo-black.png" />
-							</LogoLinkStyled>
-							<HamburgerUtilities>
-								<HamburgerUlityItem>
-									<Icon className="fal fa-search fa-rotate-90" onClick={openModalHandler} />
-								</HamburgerUlityItem>
-								<HamburgerUlityItem>
-									<Link to="/cart" style={{ color: 'black', textDecoration: 'none' }}>
-										<Icon className="fal fa-shopping-bag" />
-										<CartNumb>({props.basketProps.basketNumbers})</CartNumb>
-									</Link>
-								</HamburgerUlityItem>
-								<HamburgerUlityItem>
-									<InputNavbar type="checkbox" onClick={() => setMenuOpen(!menuOpen)} />
-									<HamburgerLine />
-								</HamburgerUlityItem>
-							</HamburgerUtilities>
-						</HamburgerNavContainer>
+						<FadeSearchBox>
+							<HamburgerNavContainer>
+								<LogoLinkStyled to="/">
+									<LogoNav src="https://thebeuter.com/wp-content/uploads/2020/04/logo-black.png" />
+								</LogoLinkStyled>
+								<HamburgerUtilities>
+									<HamburgerUlityItem>
+										<Icon className="fal fa-search fa-rotate-90" onClick={openModalHandler} />
+									</HamburgerUlityItem>
+									<HamburgerUlityItem>
+										<Link to="/cart" style={{ color: 'black', textDecoration: 'none' }}>
+											<Icon className="fal fa-shopping-bag" />
+											<CartNumb>({props.basketProps.basketNumbers})</CartNumb>
+										</Link>
+									</HamburgerUlityItem>
+									<HamburgerUlityItem>
+										<InputNavbar type="checkbox" onClick={() => setMenuOpen(!menuOpen)} />
+										<HamburgerLine />
+									</HamburgerUlityItem>
+								</HamburgerUtilities>
+							</HamburgerNavContainer>
+						</FadeSearchBox>
 					</HamburgerNav>
 
 					<HamburgerSearch>
 						{isShowing ? <SearchBoxModal onClick={closeModalHandler} /> : null}
-						<SearchBox show={isShowing} close={closeModalHandler}>
-							<SearchTitle>What are you looking for?</SearchTitle>
-							<FormSearch onSubmit={onSubmit}>
-								<SearchInput
-									type="text"
-									placeholder="Type something to search"
-									onChange={(e) => setSearchTerm(e.target.value)}
-									defaultValue={searchTerm}
-								/>
-								<SearchButton type="submit" value="Search" />
-							</FormSearch>
-						</SearchBox>
+						<FadeSearchBox>
+							<SearchBox show={isShowing} close={closeModalHandler}>
+								<SearchTitle>What are you looking for?</SearchTitle>
+								<FormSearch onSubmit={onSubmit}>
+									<SearchInput
+										type="text"
+										placeholder="Type something to search"
+										onChange={(e) => setSearchTerm(e.target.value)}
+										defaultValue={searchTerm}
+									/>
+									<SearchButton type="submit" value="Search" />
+								</FormSearch>
+							</SearchBox>
+						</FadeSearchBox>
 					</HamburgerSearch>
 					{/* Top Navbar */}
 					<NavBar>
@@ -390,14 +395,18 @@ const App = (props) => {
 							<LogoNav src="https://thebeuter.com/wp-content/uploads/2020/04/logo-black.png" />
 						</Link>
 						<Utilities>
-							<UlityItem>
-								<SearchProduct type="submit" onClick={openModalHandler}>
-									SEARCH A PRODUCT <Icon className="fal fa-search fa-rotate-90" />
-								</SearchProduct>
-							</UlityItem>
-							<UlityItem>
-								<ShoppingBag to="/cart">SHOPPING BAG ( {props.basketProps.basketNumbers} )</ShoppingBag>
-							</UlityItem>
+							<FadeSearchBox>
+								<UlityItem>
+									<SearchProduct type="submit" onClick={openModalHandler}>
+										SEARCH A PRODUCT <Icon className="fal fa-search fa-rotate-90" />
+									</SearchProduct>
+								</UlityItem>
+								<UlityItem>
+									<ShoppingBag to="/cart">
+										SHOPPING BAG ( {props.basketProps.basketNumbers} )
+									</ShoppingBag>
+								</UlityItem>
+							</FadeSearchBox>
 						</Utilities>
 						{isShowing ? <SearchBoxModal onClick={closeModalHandler} /> : null}
 						<FadeSearchBox>
