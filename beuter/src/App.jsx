@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { CSSTransition, Transition } from 'react-transition-group';
 import SideNav from './Components/SideNav';
 import SearchBox from './Components/SearchBox.jsx';
@@ -227,6 +227,7 @@ const App = (props) => {
 		window.location.reload(false);
 	}
 
+	const [ inProp, setInProp ] = useState(false);
 	const [ menuOpen, setMenuOpen ] = useState(false);
 	useEffect(() => {
 		getNumbers();
@@ -289,7 +290,7 @@ const App = (props) => {
 	`;
 
 	return (
-		<div>
+		<Fragment>
 			<GlobalStyle />
 			{/* Hamburger Navbar */}
 			<HamburgerNav>
@@ -365,39 +366,37 @@ const App = (props) => {
 				<Container>
 					<SideNav menuOpen={menuOpen} setMenuOpen={setMenuOpen} refreshPage={refreshPage} />
 					<RouterStyle>
-						<CSSTransition>
-							<Router>
-								<ContactForm path="/contact" menuOpen={menuOpen} />
-								<SizeChart path="/size-chart" />
-								<ShippingAndReturn path="/shipping-return" />
-								<PrivacyAndPolicy path="/privacy-policy" />
-								<AboutUs path="/about-us" />
-								<ShopAllProducts path="/" />
-								<NewArrival path="/shop/new-arrival" />
-								<Tops path="/product-category/top" />
-								{/*  */}
-								<TShirt path="product-category/top/t-shirt" />
-								<Shirts path="product-category/top/shirts" />
-								<Hoodies path="product-category/top/hoodies" />
-								<Coats path="product-category/top/coats" />
+						<Router>
+							<ContactForm path="/contact" menuOpen={menuOpen} />
+							<SizeChart path="/size-chart" />
+							<ShippingAndReturn path="/shipping-return" />
+							<PrivacyAndPolicy path="/privacy-policy" />
+							<AboutUs path="/about-us" />
+							<ShopAllProducts path="/" />
+							<NewArrival path="/shop/new-arrival" />
+							<Tops path="/product-category/top" />
+							{/*  */}
+							<TShirt path="product-category/top/t-shirt" />
+							<Shirts path="product-category/top/shirts" />
+							<Hoodies path="product-category/top/hoodies" />
+							<Coats path="product-category/top/coats" />
 
-								<Shorts path="product-category/bottom/shorts" />
-								<Pants path="product-category/bottom/pants" />
-								{/*  */}
-								<Bottoms path="/product-category/bottom" />
-								<Bags path="/product-category/bag" />
-								<Product path="/product/:title_url" />
-								<SearchInfo path="/search/:title" searchTerm={searchTerm} title="Profile" />
-								<Cart path="/cart" />
-								<Checkout path="/checkout" />
-								<Form path="/add/form" />
-							</Router>
-						</CSSTransition>
+							<Shorts path="product-category/bottom/shorts" />
+							<Pants path="product-category/bottom/pants" />
+							{/*  */}
+							<Bottoms path="/product-category/bottom" />
+							<Bags path="/product-category/bag" />
+							<Product path="/product/:title_url" />
+							<SearchInfo path="/search/:title" searchTerm={searchTerm} title="Profile" />
+							<Cart path="/cart" />
+							<Checkout path="/checkout" />
+							<Form path="/add/form" />
+						</Router>
 					</RouterStyle>
 				</Container>
 				<Footer />
 			</Wrapper>
-		</div>
+		</Fragment>
 	);
 };
 

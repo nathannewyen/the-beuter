@@ -93,10 +93,7 @@ const Coats = (props) => {
 					<Item key={i}>
 						<ItemLink to={`/product/${filteredItem.title_url}`}>
 							<ItemImage src={filteredItem.img_url1} /> <ItemTitle> {filteredItem.title} </ItemTitle>{' '}
-							<ItemPrice>
-								{nf.format(filteredItem.price)}
-								vnd
-							</ItemPrice>
+							<ItemPrice>{nf.format(filteredItem.price)} vnd</ItemPrice>
 						</ItemLink>
 					</Item>
 				))}

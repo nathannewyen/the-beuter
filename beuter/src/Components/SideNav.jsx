@@ -4,7 +4,8 @@ import { Link } from '@reach/router';
 import theme from '../Styles/theme';
 import media from '../Styles/media';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-const { fontSizes } = theme;
+import '../Styles/style.css';
+const { fontSizes, loaderDelay } = theme;
 
 const Wrapper = styled.div`
 transform: 'translateX(-100%)'};
@@ -39,7 +40,6 @@ const AllItems = styled.ul`
   max-width: none;
   height: 100vh;
   overflow: auto;
-  transition: all .2s ease-in-out;
   `};
 
 	${media.mobileL`
@@ -65,38 +65,32 @@ const Item = styled(Link)`
   display: block;
 `;
 
-const HamburgerSize = styled.nav`
-	transform: ${(props) => (props.menuOpen ? 'translateX(0)' : 'translateX(0)')};
-	transition: transform 0.3s ease-in-out;
-`;
+const HamburgerSize = styled.nav``;
 
 const SideNav = (props) => {
 	return (
 		<Wrapper>
 			{props.menuOpen ? (
-				<TransitionGroup>
-					<CSSTransition>
-						<HamburgerSize onClick={props.refreshPage}>
-							<AllItems
-								onClick={() => {
-									props.setMenuOpen(!props.menuOpen);
-								}}
-							>
-								<ListItems to="/product-category/top"> TOPS </ListItems>
-								<Item to="/product-category/top/t-shirt"> T - Shirts </Item>
-								<Item to="product-category/top/shirts"> Shirts </Item>
-								<Item to="product-category/top/hoodies"> Hoodies </Item>
-								<Item to="product-category/top/coats"> Jackets & Coats </Item>
-								<ListItems to="/product-category/bottom"> BOTTOMS </ListItems>
-								<Item to="product-category/bottom/pants"> Pants </Item>
-								<Item to="product-category/bottom/shorts"> Shorts </Item>
-								<ListItems to="/product-category/bag"> BAGS & BACKPACKS </ListItems>
-								<ListItems to="/about-us"> ABOUT US </ListItems>{' '}
-								<ListItems to="/contact"> CONTACT </ListItems>
-							</AllItems>
-						</HamburgerSize>
-					</CSSTransition>
-				</TransitionGroup>
+				<HamburgerSize onClick={props.refreshPage}>
+					<AllItems
+						onClick={() => {
+							props.setMenuOpen(!props.menuOpen);
+						}}
+						style={{ transform: `translateX(0%)`, transition: `all 300ms` }}
+					>
+						<ListItems to="/product-category/top"> TOPS </ListItems>
+						<Item to="/product-category/top/t-shirt"> T - Shirts </Item>
+						<Item to="product-category/top/shirts"> Shirts </Item>
+						<Item to="product-category/top/hoodies"> Hoodies </Item>
+						<Item to="product-category/top/coats"> Jackets & Coats </Item>
+						<ListItems to="/product-category/bottom"> BOTTOMS </ListItems>
+						<Item to="product-category/bottom/pants"> Pants </Item>
+						<Item to="product-category/bottom/shorts"> Shorts </Item>
+						<ListItems to="/product-category/bag"> BAGS & BACKPACKS </ListItems>
+						<ListItems to="/about-us"> ABOUT US </ListItems>
+						<ListItems to="/contact"> CONTACT </ListItems>
+					</AllItems>
+				</HamburgerSize>
 			) : null}
 			<Sidenav>
 				<AllItems>
