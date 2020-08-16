@@ -1,5 +1,4 @@
 import React, { useState, useEffect, Fragment } from 'react';
-import { CSSTransition, Transition } from 'react-transition-group';
 import SideNav from './Components/SideNav';
 import SearchBox from './Components/SearchBox.jsx';
 import SearchInfo from './Components/SearchInfo';
@@ -34,7 +33,7 @@ import { Router, Link, navigate } from '@reach/router';
 import { connect } from 'react-redux';
 import { getNumbers } from './actions/getAction';
 
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import theme from './Styles/theme';
 import media from './Styles/media';
 import mediaMin from './Styles/mediaMin';
@@ -264,11 +263,27 @@ const InputNavbar = styled.input`
 	}
 `;
 
-const App = (props) => {
-	function refreshPage() {
-		window.location.reload(false);
-	}
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
 
+  to {
+    opacity: 1;
+  }
+`;
+
+const fadeOut = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
+
+const App = (props) => {
 	const [ storeOpen, setStoreOpen ] = useState(false);
 	const [ menuOpen, setMenuOpen ] = useState(false);
 	useEffect(() => {
@@ -299,23 +314,15 @@ const App = (props) => {
 		setOpacity(1);
 	};
 
-	const Wrapper = styled.div`
-		opacity: ${(isShowing) => (isShowing ? opacity : null)};
-		transition: opacity 5s ease-in;
-		-moz-transition: opacity 5s ease-in;
-		-webkit-transition: opacity 5s ease-in;
-		-o-transition: opacity 5s ease-in;
-	`;
+	const Wrapper = styled.div`opacity: ${(isShowing) => (isShowing ? opacity : null)};`;
 
 	const LogoNav = styled.img`
 		src: url(${(props) => props.src});
 		width: 180px;
 		position: fixed;
 		opacity: ${(isShowing) => (isShowing ? opacity : null)};
-		transition: opacity 5s ease-in;
-		-moz-transition: opacity 5s ease-in;
-		-webkit-transition: opacity 5s ease-in;
-		-o-transition: opacity 5s ease-in;
+
+		transition: opacity 3s;
 		${media.tablet`width: 140px;`};
 		${media.mobileL`vertical-align: middle`};
 	`;
@@ -330,6 +337,9 @@ const App = (props) => {
 		position: fixed;
 		opacity: ${opacity};
 	`;
+
+	const FadeSearchBox = styled.div`animation: ${(isShowing) => (isShowing ? fadeOut : fadeIn)} 0.3s linear;`;
+	const FadePage = styled.div`animation: ${(isShowing) => (isShowing ? fadeIn : fadeOut)} 0.3s linear;`;
 
 	return (
 		<Fragment>
@@ -390,54 +400,58 @@ const App = (props) => {
 							</UlityItem>
 						</Utilities>
 						{isShowing ? <SearchBoxModal onClick={closeModalHandler} /> : null}
-						<SearchBox show={isShowing} close={closeModalHandler}>
-							<SearchTitle>What are you looking for?</SearchTitle>
-							<FormSearch onSubmit={onSubmit}>
-								<SearchInput
-									type="text"
-									placeholder="Type something to search"
-									onChange={(e) => setSearchTerm(e.target.value)}
-									defaultValue={searchTerm}
-								/>
-								<SearchButton type="submit" value="Search" />
-							</FormSearch>
-						</SearchBox>
+						<FadeSearchBox>
+							<SearchBox show={isShowing} close={closeModalHandler}>
+								<SearchTitle>What are you looking for?</SearchTitle>
+								<FormSearch onSubmit={onSubmit}>
+									<SearchInput
+										type="text"
+										placeholder="Type something to search"
+										onChange={(e) => setSearchTerm(e.target.value)}
+										defaultValue={searchTerm}
+									/>
+									<SearchButton type="submit" value="Search" />
+								</FormSearch>
+							</SearchBox>
+						</FadeSearchBox>
 					</NavBar>
 					{/* End Top Navbar */}
 
 					<Wrapper>
-						<Container>
-							<SideNav menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-							<RouterStyle>
-								<Router>
-									<ContactForm path="/contact" menuOpen={menuOpen} />
-									<SizeChart path="/size-chart" />
-									<ShippingAndReturn path="/shipping-return" />
-									<PrivacyAndPolicy path="/privacy-policy" />
-									<AboutUs path="/about-us" />
-									<ShopAllProducts path="/" />
-									<NewArrival path="/shop/new-arrival" />
-									<Tops path="/product-category/top" />
-									{/*  */}
-									<TShirt path="product-category/top/t-shirt" />
-									<Shirts path="product-category/top/shirts" />
-									<Hoodies path="product-category/top/hoodies" />
-									<Coats path="product-category/top/coats" />
+						<FadePage>
+							<Container>
+								<SideNav menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+								<RouterStyle>
+									<Router>
+										<ContactForm path="/contact" menuOpen={menuOpen} />
+										<SizeChart path="/size-chart" />
+										<ShippingAndReturn path="/shipping-return" />
+										<PrivacyAndPolicy path="/privacy-policy" />
+										<AboutUs path="/about-us" />
+										<ShopAllProducts path="/" />
+										<NewArrival path="/shop/new-arrival" />
+										<Tops path="/product-category/top" />
+										{/*  */}
+										<TShirt path="product-category/top/t-shirt" />
+										<Shirts path="product-category/top/shirts" />
+										<Hoodies path="product-category/top/hoodies" />
+										<Coats path="product-category/top/coats" />
 
-									<Shorts path="product-category/bottom/shorts" />
-									<Pants path="product-category/bottom/pants" />
-									{/*  */}
-									<Bottoms path="/product-category/bottom" />
-									<Bags path="/product-category/bag" />
-									<Product path="/product/:title_url" />
-									<SearchInfo path="/search/:title" searchTerm={searchTerm} title="Profile" />
-									<Cart path="/cart" />
-									<Checkout path="/checkout" />
-									<Form path="/add/form" />
-								</Router>
-							</RouterStyle>
-						</Container>
-						<Footer />
+										<Shorts path="product-category/bottom/shorts" />
+										<Pants path="product-category/bottom/pants" />
+										{/*  */}
+										<Bottoms path="/product-category/bottom" />
+										<Bags path="/product-category/bag" />
+										<Product path="/product/:title_url" />
+										<SearchInfo path="/search/:title" searchTerm={searchTerm} title="Profile" />
+										<Cart path="/cart" />
+										<Checkout path="/checkout" />
+										<Form path="/add/form" />
+									</Router>
+								</RouterStyle>
+							</Container>
+							<Footer />
+						</FadePage>
 					</Wrapper>
 				</Fragment>
 			) : (
