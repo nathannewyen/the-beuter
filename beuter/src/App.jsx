@@ -122,6 +122,27 @@ const SearchButton = styled.input`
 
 const RouterStyle = styled.div`display: inline-block;`;
 
+const VideoSource = styled.video`
+	src: url(${(props) => props.src});
+	position: absolute;
+	width: 100%;
+`;
+
+const FragmentStyle = styled.div`padding: 20px;`;
+
+const StoreOpen = styled.button`
+	border: 0;
+	background-color: transparent;
+	position: fixed;
+	z-index: 1;
+	display: inline-block;
+	color: white;
+	cursor: pointer;
+	margin: 30px;
+	font-weight: bold;
+	font-family: system-ui;
+`;
+
 // Hamburger NavBar
 
 const HamburgerNav = styled.nav`
@@ -227,7 +248,7 @@ const App = (props) => {
 		window.location.reload(false);
 	}
 
-	const [ inProp, setInProp ] = useState(false);
+	const [ storeOpen, setStoreOpen ] = useState(false);
 	const [ menuOpen, setMenuOpen ] = useState(false);
 	useEffect(() => {
 		getNumbers();
@@ -291,111 +312,134 @@ const App = (props) => {
 
 	return (
 		<Fragment>
-			<GlobalStyle />
-			{/* Hamburger Navbar */}
-			<HamburgerNav>
-				<HamburgerNavContainer>
-					<LogoLinkStyled to="/">
-						<LogoNav src="https://thebeuter.com/wp-content/uploads/2020/04/logo-black.png" />
-					</LogoLinkStyled>
-					<HamburgerUtilities>
-						<HamburgerUlityItem>
-							<Icon className="fal fa-search fa-rotate-90" onClick={openModalHandler} />
-						</HamburgerUlityItem>
-						<HamburgerUlityItem>
-							<Link to="/cart" style={{ color: 'black', textDecoration: 'none' }}>
-								<Icon className="fal fa-shopping-bag" />
-								<CartNumb>({props.basketProps.basketNumbers})</CartNumb>
-							</Link>
-						</HamburgerUlityItem>
-						<HamburgerUlityItem>
-							<InputNavbar type="checkbox" onClick={() => setMenuOpen(!menuOpen)} />
-							<HamburgerLine />
-						</HamburgerUlityItem>
-					</HamburgerUtilities>
-				</HamburgerNavContainer>
-			</HamburgerNav>
-			{/* End Hamburger Navbar */}
-			<HamburgerSearch>
-				{isShowing ? <SearchBoxModal onClick={closeModalHandler} /> : null}
-				<SearchBox show={isShowing} close={closeModalHandler}>
-					<SearchTitle>What are you looking for?</SearchTitle>
-					<FormSearch onSubmit={onSubmit}>
-						<SearchInput
-							type="text"
-							placeholder="Type something to search"
-							onChange={(e) => setSearchTerm(e.target.value)}
-							defaultValue={searchTerm}
-						/>
-						<SearchButton type="submit" value="Search" />
-					</FormSearch>
-				</SearchBox>
-			</HamburgerSearch>
-			{/* Top Navbar */}
-			<NavBar>
-				<Link to="/">
-					<LogoNav src="https://thebeuter.com/wp-content/uploads/2020/04/logo-black.png" />
-				</Link>
-				<Utilities>
-					<UlityItem>
-						<SearchProduct type="submit" onClick={openModalHandler}>
-							SEARCH A PRODUCT <Icon className="fal fa-search fa-rotate-90" />
-						</SearchProduct>
-					</UlityItem>
-					<UlityItem>
-						<ShoppingBag to="/cart"> SHOPPING BAG ( {props.basketProps.basketNumbers} )</ShoppingBag>
-					</UlityItem>
-				</Utilities>
-				{isShowing ? <SearchBoxModal onClick={closeModalHandler} /> : null}
-				<SearchBox show={isShowing} close={closeModalHandler}>
-					<SearchTitle>What are you looking for?</SearchTitle>
-					<FormSearch onSubmit={onSubmit}>
-						<SearchInput
-							type="text"
-							placeholder="Type something to search"
-							onChange={(e) => setSearchTerm(e.target.value)}
-							defaultValue={searchTerm}
-						/>
-						<SearchButton type="submit" value="Search" />
-					</FormSearch>
-				</SearchBox>
-			</NavBar>
-			{/* End Top Navbar */}
+			{storeOpen ? (
+				<div>
+					<GlobalStyle />
+					<HamburgerNav>
+						<HamburgerNavContainer>
+							<LogoLinkStyled to="/">
+								<LogoNav src="https://thebeuter.com/wp-content/uploads/2020/04/logo-black.png" />
+							</LogoLinkStyled>
+							<HamburgerUtilities>
+								<HamburgerUlityItem>
+									<Icon className="fal fa-search fa-rotate-90" onClick={openModalHandler} />
+								</HamburgerUlityItem>
+								<HamburgerUlityItem>
+									<Link to="/cart" style={{ color: 'black', textDecoration: 'none' }}>
+										<Icon className="fal fa-shopping-bag" />
+										<CartNumb>({props.basketProps.basketNumbers})</CartNumb>
+									</Link>
+								</HamburgerUlityItem>
+								<HamburgerUlityItem>
+									<InputNavbar type="checkbox" onClick={() => setMenuOpen(!menuOpen)} />
+									<HamburgerLine />
+								</HamburgerUlityItem>
+							</HamburgerUtilities>
+						</HamburgerNavContainer>
+					</HamburgerNav>
 
-			<Wrapper>
-				<Container>
-					<SideNav menuOpen={menuOpen} setMenuOpen={setMenuOpen} refreshPage={refreshPage} />
-					<RouterStyle>
-						<Router>
-							<ContactForm path="/contact" menuOpen={menuOpen} />
-							<SizeChart path="/size-chart" />
-							<ShippingAndReturn path="/shipping-return" />
-							<PrivacyAndPolicy path="/privacy-policy" />
-							<AboutUs path="/about-us" />
-							<ShopAllProducts path="/" />
-							<NewArrival path="/shop/new-arrival" />
-							<Tops path="/product-category/top" />
-							{/*  */}
-							<TShirt path="product-category/top/t-shirt" />
-							<Shirts path="product-category/top/shirts" />
-							<Hoodies path="product-category/top/hoodies" />
-							<Coats path="product-category/top/coats" />
+					<HamburgerSearch>
+						{isShowing ? <SearchBoxModal onClick={closeModalHandler} /> : null}
+						<SearchBox show={isShowing} close={closeModalHandler}>
+							<SearchTitle>What are you looking for?</SearchTitle>
+							<FormSearch onSubmit={onSubmit}>
+								<SearchInput
+									type="text"
+									placeholder="Type something to search"
+									onChange={(e) => setSearchTerm(e.target.value)}
+									defaultValue={searchTerm}
+								/>
+								<SearchButton type="submit" value="Search" />
+							</FormSearch>
+						</SearchBox>
+					</HamburgerSearch>
+					{/* Top Navbar */}
+					<NavBar>
+						<Link to="/">
+							<LogoNav src="https://thebeuter.com/wp-content/uploads/2020/04/logo-black.png" />
+						</Link>
+						<Utilities>
+							<UlityItem>
+								<SearchProduct type="submit" onClick={openModalHandler}>
+									SEARCH A PRODUCT <Icon className="fal fa-search fa-rotate-90" />
+								</SearchProduct>
+							</UlityItem>
+							<UlityItem>
+								<ShoppingBag to="/cart">
+									{' '}
+									SHOPPING BAG ( {props.basketProps.basketNumbers} )
+								</ShoppingBag>
+							</UlityItem>
+						</Utilities>
+						{isShowing ? <SearchBoxModal onClick={closeModalHandler} /> : null}
+						<SearchBox show={isShowing} close={closeModalHandler}>
+							<SearchTitle>What are you looking for?</SearchTitle>
+							<FormSearch onSubmit={onSubmit}>
+								<SearchInput
+									type="text"
+									placeholder="Type something to search"
+									onChange={(e) => setSearchTerm(e.target.value)}
+									defaultValue={searchTerm}
+								/>
+								<SearchButton type="submit" value="Search" />
+							</FormSearch>
+						</SearchBox>
+					</NavBar>
+					{/* End Top Navbar */}
 
-							<Shorts path="product-category/bottom/shorts" />
-							<Pants path="product-category/bottom/pants" />
-							{/*  */}
-							<Bottoms path="/product-category/bottom" />
-							<Bags path="/product-category/bag" />
-							<Product path="/product/:title_url" />
-							<SearchInfo path="/search/:title" searchTerm={searchTerm} title="Profile" />
-							<Cart path="/cart" />
-							<Checkout path="/checkout" />
-							<Form path="/add/form" />
-						</Router>
-					</RouterStyle>
-				</Container>
-				<Footer />
-			</Wrapper>
+					<Wrapper>
+						<Container>
+							<SideNav menuOpen={menuOpen} setMenuOpen={setMenuOpen} refreshPage={refreshPage} />
+							<RouterStyle>
+								<Router>
+									<ContactForm path="/contact" menuOpen={menuOpen} />
+									<SizeChart path="/size-chart" />
+									<ShippingAndReturn path="/shipping-return" />
+									<PrivacyAndPolicy path="/privacy-policy" />
+									<AboutUs path="/about-us" />
+									<ShopAllProducts path="/" />
+									<NewArrival path="/shop/new-arrival" />
+									<Tops path="/product-category/top" />
+									{/*  */}
+									<TShirt path="product-category/top/t-shirt" />
+									<Shirts path="product-category/top/shirts" />
+									<Hoodies path="product-category/top/hoodies" />
+									<Coats path="product-category/top/coats" />
+
+									<Shorts path="product-category/bottom/shorts" />
+									<Pants path="product-category/bottom/pants" />
+									{/*  */}
+									<Bottoms path="/product-category/bottom" />
+									<Bags path="/product-category/bag" />
+									<Product path="/product/:title_url" />
+									<SearchInfo path="/search/:title" searchTerm={searchTerm} title="Profile" />
+									<Cart path="/cart" />
+									<Checkout path="/checkout" />
+									<Form path="/add/form" />
+								</Router>
+							</RouterStyle>
+						</Container>
+						<Footer />
+					</Wrapper>
+				</div>
+			) : (
+				<Fragment>
+					<VideoSource
+						src="https://thebeuter.com/wp-content/uploads/2020/04/Wellcome_Smaillsize.mp4"
+						autoPlay
+						loop
+						muted
+					/>
+					<FragmentStyle>
+						<LogoLinkStyled to="/">
+							<LogoNav src="https://thebeuter.com/wp-content/uploads/2020/04/logo-white.png" />
+						</LogoLinkStyled>
+						<StoreOpen type="submit" onClick={() => setStoreOpen(true)}>
+							Web Store
+						</StoreOpen>
+					</FragmentStyle>
+				</Fragment>
+			)}
 		</Fragment>
 	);
 };
