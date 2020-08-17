@@ -336,7 +336,6 @@ const App = (props) => {
 	const HamburgerUtilities = styled.div`
 		display: flex;
 		margin-top: 14px;
-		opacity: ${opacity};
 	`;
 
 	const FadeSearchBox = styled.div`animation: ${(isShowing) => (isShowing ? fadeOut : fadeIn)} 0.3s linear;`;
@@ -374,20 +373,18 @@ const App = (props) => {
 
 					<HamburgerSearch>
 						{isShowing ? <SearchBoxModal onClick={closeModalHandler} /> : null}
-						<FadeSearchBox>
-							<SearchBox show={isShowing} close={closeModalHandler}>
-								<SearchTitle>What are you looking for?</SearchTitle>
-								<FormSearch onSubmit={onSubmit}>
-									<SearchInput
-										type="text"
-										placeholder="Type something to search"
-										onChange={(e) => setSearchTerm(e.target.value)}
-										defaultValue={searchTerm}
-									/>
-									<SearchButton type="submit" value="Search" />
-								</FormSearch>
-							</SearchBox>
-						</FadeSearchBox>
+						<SearchBox show={isShowing} close={closeModalHandler}>
+							<SearchTitle>What are you looking for?</SearchTitle>
+							<FormSearch onSubmit={onSubmit}>
+								<SearchInput
+									type="text"
+									placeholder="Type something to search"
+									onChange={(e) => setSearchTerm(e.target.value)}
+									defaultValue={searchTerm}
+								/>
+								<SearchButton type="submit" value="Search" />
+							</FormSearch>
+						</SearchBox>
 					</HamburgerSearch>
 					{/* Top Navbar */}
 					<NavBar>
@@ -409,20 +406,18 @@ const App = (props) => {
 							</FadeSearchBox>
 						</Utilities>
 						{isShowing ? <SearchBoxModal onClick={closeModalHandler} /> : null}
-						<FadeSearchBox>
-							<SearchBox show={isShowing} close={closeModalHandler}>
-								<SearchTitle>What are you looking for?</SearchTitle>
-								<FormSearch onSubmit={onSubmit}>
-									<SearchInput
-										type="text"
-										placeholder="Type something to search"
-										onChange={(e) => setSearchTerm(e.target.value)}
-										defaultValue={searchTerm}
-									/>
-									<SearchButton type="submit" value="Search" />
-								</FormSearch>
-							</SearchBox>
-						</FadeSearchBox>
+						<SearchBox show={isShowing} close={closeModalHandler}>
+							<SearchTitle>What are you looking for?</SearchTitle>
+							<FormSearch onSubmit={onSubmit}>
+								<SearchInput
+									type="text"
+									placeholder="Type something to search"
+									onChange={(e) => setSearchTerm(e.target.value)}
+									defaultValue={searchTerm}
+								/>
+								<SearchButton type="submit" value="Search" />
+							</FormSearch>
+						</SearchBox>
 					</NavBar>
 					{/* End Top Navbar */}
 
