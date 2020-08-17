@@ -9,7 +9,7 @@ const sizes = {
   tablet: '801',
   laptop: '1024',
   laptopL: '1200',
-  desktop: '2000',
+  desktop: '2001',
   giantDesktop: '2800'
 }
 

@@ -3,9 +3,8 @@ import styled from 'styled-components';
 import { Link } from '@reach/router';
 import theme from '../Styles/theme';
 import media from '../Styles/media';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import '../Styles/style.css';
-const { fontSizes, loaderDelay } = theme;
+const { fontSizes } = theme;
 
 const Wrapper = styled.div`
 transform: 'translateX(-100%)'};

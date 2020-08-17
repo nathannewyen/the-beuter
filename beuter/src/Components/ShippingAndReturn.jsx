@@ -1,13 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import theme from '../Styles/theme';
+import media from '../Styles/media';
 import mediaMin from '../Styles/mediaMin';
 const { fontSizes } = theme;
 
 const ShippingAndReturnWrapper = styled.div`
 	margin: 50px 0 0;
 	width: 100%;
-	${mediaMin.desktop`margin-left: 400px;`};
+	${media.desktop`margin-left: 400px;`};
+	${mediaMin.desktop`margin-left: 600px;`};
 `;
 
 const ShippingContainer = styled.div`

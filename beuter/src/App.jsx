@@ -37,7 +37,7 @@ import styled, { keyframes } from 'styled-components';
 import theme from './Styles/theme';
 import media from './Styles/media';
 import mediaMin from './Styles/mediaMin';
-const { fontSizes, loaderDelay } = theme;
+const { fontSizes } = theme;
 
 const NavBar = styled.nav`
 	padding: 30px 70px;

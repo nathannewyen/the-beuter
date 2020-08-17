@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import media from '../Styles/media';
+import mediaMin from '../Styles/mediaMin';
 import theme from '../Styles/theme';
 const { fontSizes } = theme;
 
@@ -8,6 +9,7 @@ const SizeChartWrapper = styled.div`
 	width: 100%;
 	margin: 50px 0 0;
 	${media.desktop`margin-left: 400px;`};
+	${mediaMin.desktop`margin-left: 600px;`};
 `;
 
 const SizeChartContainer = styled.div`
