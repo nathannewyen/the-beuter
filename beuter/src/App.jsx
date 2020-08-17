@@ -138,7 +138,7 @@ const ImageMobile = styled.img`
 	position: absolute;
 	top: 0;
 	left: 50%;
-	${mediaMin.tablet`visibility: hidden;`};
+	${mediaMin.laptopL`visibility: hidden;`};
 `;
 
 const VideoSource = styled.video`
