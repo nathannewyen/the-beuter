@@ -55,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "emailjs-com": "^2.6.3",
     "http-proxy-middleware": "^1.0.5"
   }
 }
