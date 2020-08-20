@@ -486,6 +486,7 @@ const App = (props) => {
               <MessengerCustomerChat
                 pageId="113449613804978"
                 appId="931451464027074"
+                theme_color="#000000"
               />
               <Footer />
             </FadePage>
