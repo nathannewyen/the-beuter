@@ -5,6 +5,8 @@ const express = require("express"),
     db = "beuter",
     path = require("path")
 
+const uri = process.env.MONGODB_URI;
+
 app.use(cors());
 app.use(express.json());
 
