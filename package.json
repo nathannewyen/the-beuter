@@ -16,9 +16,9 @@
     "cors": "^2.8.5",
     "emailjs-com": "^2.6.3",
     "express": "^4.17.1",
-    "mongoose": "^5.9.25"
+    "mongoose": "^5.9.25",
+    "webpack": "^4.44.2"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nathannewyen/the-beuter.git"
@@ -28,5 +28,8 @@
   },
   "homepage": "https://github.com/nathannewyen/the-beuter#readme",
   "description": "",
-  "proxy": "http://localhost:8000"
+  "proxy": "http://localhost:8000",
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
 }
