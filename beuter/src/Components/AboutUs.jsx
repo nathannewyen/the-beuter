@@ -2,6 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import theme from '../Styles/theme';
 import media from '../Styles/media';
+
+import AboutUsImage from '../Images/aboutus.jpg';
+
 const { fontSizes } = theme;
 
 const Wrapper = styled.div`
@@ -37,7 +40,7 @@ const AboutUs = (props) => {
 		<Wrapper>
 			<Container>
 				<Title>ABOUT US</Title>
-				<Img src="https://thebeuter.com/wp-content/uploads/2020/04/ABOUT-US-EN222-1442x2048.jpg" />
+				<Img src={AboutUsImage} />
 			</Container>
 		</Wrapper>
 	);

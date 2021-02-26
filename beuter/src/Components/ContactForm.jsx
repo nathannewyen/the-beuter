@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { navigate } from "@reach/router";
 import styled from "styled-components";
 import theme from "../Styles/theme";
 import media from "../Styles/media";

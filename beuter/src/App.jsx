@@ -39,6 +39,10 @@ import styled, { keyframes } from "styled-components";
 import theme from "./Styles/theme";
 import media from "./Styles/media";
 import mediaMin from "./Styles/mediaMin";
+
+// Import Logo Image
+import Logo from "./Images/logo.png";
+
 const { fontSizes } = theme;
 
 const NavBar = styled.nav`
@@ -137,21 +141,13 @@ const HomePageContainer = styled.div`
 const ImageMobile = styled.img`
   src: url(${(props) => props.src});
   height: 100%;
-  width: auto;
-  display: block;
-  max-width: none;
-  transform: translateX(-50%);
-  position: absolute;
-  top: 0;
-  left: 50%;
-  ${mediaMin.laptopL`visibility: hidden;`};
+  width: 100%;
 `;
 
-const VideoSource = styled.video`
+const ImageBanner = styled.image`
   src: url(${(props) => props.src});
   position: absolute;
   width: 100%;
-  ${media.mobileL`visibility: hidden;`};
 `;
 
 const FragmentStyle = styled.div`
@@ -365,7 +361,7 @@ const App = (props) => {
             <FadeSearchBox>
               <HamburgerNavContainer>
                 <LogoLinkStyled to="/">
-                  <LogoNav src="https://thebeuter.com/wp-content/uploads/2020/04/logo-black.png" />
+                  <LogoNav style={{filter: "invert(1)"}} src="https://storage.googleapis.com/cdn.nhanh.vn/store2/89373/store_1608885425_587.png" />
                 </LogoLinkStyled>
                 <HamburgerUtilities>
                   <HamburgerUlityItem>
@@ -413,7 +409,7 @@ const App = (props) => {
           {/* Top Navbar */}
           <NavBar>
             <Link to="/">
-              <LogoNav src="https://thebeuter.com/wp-content/uploads/2020/04/logo-black.png" />
+              <LogoNav style={{filter: "invert(1)"}} src="https://storage.googleapis.com/cdn.nhanh.vn/store2/89373/store_1608885425_587.png" />
             </Link>
             <Utilities>
               <FadeSearchBox>
@@ -495,20 +491,17 @@ const App = (props) => {
       ) : (
         <Fragment>
           <HomePageContainer>
-            <VideoSource
-              src="https://thebeuter.com/wp-content/uploads/2020/04/Wellcome_Smaillsize.mp4"
-              autoPlay
-              loop
-              muted
+            <ImageBanner
+              src="https://storage.googleapis.com/cdn.nhanh.vn/store2/89373/bn/sb_1613823146_438.jpg"
             />
-            <ImageMobile src="https://thebeuter.com/wp-content/uploads/2020/04/Wellcome-1.jpg" />
+            <ImageMobile src="https://storage.googleapis.com/cdn.nhanh.vn/store2/89373/bn/sb_1613823146_438.jpg" />
           </HomePageContainer>
           <FragmentStyle>
             <LogoLinkStyled to="/">
-              <LogoNav src="https://thebeuter.com/wp-content/uploads/2020/04/logo-white.png" />
-            </LogoLinkStyled>
+              <LogoNav src= {Logo} style={{ fill: 'black' }} />
+              </LogoLinkStyled>
             <StoreOpen type="submit" onClick={() => setStoreOpen(true)}>
-              Web Store
+                Web Store
             </StoreOpen>
           </FragmentStyle>
         </Fragment>
