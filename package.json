@@ -15,7 +15,7 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "emailjs-com": "^2.6.3",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "mongoose": "^5.9.25",
     "webpack": "^4.44.2"
   },
